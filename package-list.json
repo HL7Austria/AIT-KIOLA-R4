@@ -1,0 +1,15 @@
+{
+"package-id": "kiola-implementation-guide",
+"title": "KIOLA Implementation Guide",
+"canonical": "http://fhir.ehealth-systems.at/artifacts",
+"introduction": "An Implementation Guide for the KIOLA Profiles.",
+  "list": [
+    {
+      "version": "current",
+      "desc": "Draft",
+    "path": "http://fhir.ehealth-systems.at/artifacts",
+      "status": "ci-build",
+      "current": true
+    }
+  ]
+}

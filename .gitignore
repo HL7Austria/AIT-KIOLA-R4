@@ -1,0 +1,7 @@
+build/
+output/
+input-cache/
+fsh-generated/
+temp/
+template/
+validator_cli.jar
