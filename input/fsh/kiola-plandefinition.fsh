@@ -2,7 +2,7 @@ Profile: KIOLAPlanDefinition
 Parent: PlanDefinition
 Id: kiola-plan-definition
 Title: "KIOLA Plan Definition"
-Description: "KIOLA Profile for plan definitions."
+Description: "KIOLA profile for plan definitions."
 
 * url 1..1 MS
 * name 1..1 MS

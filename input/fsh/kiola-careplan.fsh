@@ -2,38 +2,44 @@ Profile: KIOLACarePlan
 Parent: CarePlan
 Id: kiola-care-plan
 Title: "KIOLA Care Plan"
-Description: "KIOLA Profile for care plans."
+Description: "Care plan containing KIOLA activities."
 
+// TODO: status = active -> active care plan for patient
+// TODO: intent = order -> is expected, everything else unsupported for now (should be ignored by the client)
+// only one active order care plan for this category may exist for a subject
 * subject only Reference(Patient)
-* subject.identifier.value ^short = "UUID of the subject"
+* subject.reference ^short = "Reference to a patient resource linked to a KIOLA subject"
+* subject.identifier.system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid"
+* subject.identifier.value ^short = "KIOLA UUID of the subject"
 * category 1.. MS
 * category.coding = http://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan
 * instantiatesCanonical MS
 * instantiatesCanonical only Canonical(KIOLAPlanDefinition)
-* activity.reference 1..1 MS
-* activity.reference only Reference(KIOLARequestGroup or KIOLAMeasurementServiceRequest)
-//* activity MS
-//* activity ^slicing.discriminator.type = #type
-//* activity ^slicing.discriminator.path = "reference.resolve()"
-//* activity ^slicing.rules = #open
-//* activity ^slicing.description = "foo"
-//* activity ^slicing.ordered = false
-//* activity contains kiolaRequestGroup 0..* MS and kiolaServiceRequestMeasurement 0..* MS
-//* activity[kiolaRequestGroup] ^short = "Actions, following a treatment program"
-//* activity[kiolaRequestGroup].reference 1..1 MS
-//* activity[kiolaRequestGroup].reference only Reference(KIOLARequestGroup)
-//* activity[kiolaRequestGroup].reference ^type.aggregation = #contained
-//* activity[kiolaServiceRequestMeasurement] ^short = "Patient-specific measurement actions"
-//* activity[kiolaServiceRequestMeasurement].reference 1..1 MS
-//* activity[kiolaServiceRequestMeasurement].reference only Reference(KIOLAMeasurementServiceRequest)
-//* activity[kiolaServiceRequestMeasurement].reference ^type.aggregation = #contained
+//* activity.reference 1..1 MS
+//* activity.reference only Reference(KIOLARequestGroup or KIOLAMeasurementServiceRequest)
+* activity MS
+// TODO: status = active
+* activity ^slicing.discriminator.type = #profile
+* activity ^slicing.discriminator.path = "reference.resolve()"
+* activity ^slicing.rules = #open  // ignore everything else
+* activity ^slicing.description = "foo"
+* activity ^slicing.ordered = false
+* activity contains kiolaRequestGroup 0..* MS and kiolaServiceRequestMeasurement 0..* MS
+* activity[kiolaRequestGroup] ^short = "Actions, following a treatment program"
+* activity[kiolaRequestGroup].reference 1..1 MS
+* activity[kiolaRequestGroup].reference only Reference(KIOLARequestGroup)
+* activity[kiolaRequestGroup].reference ^type.aggregation = #contained
+* activity[kiolaServiceRequestMeasurement] ^short = "Patient-specific measurement actions"
+* activity[kiolaServiceRequestMeasurement].reference 1..1 MS
+* activity[kiolaServiceRequestMeasurement].reference only Reference(KIOLAMeasurementServiceRequest)
+* activity[kiolaServiceRequestMeasurement].reference ^type.aggregation = #contained
 
 
 Profile: KIOLARequestGroup
 Parent: RequestGroup
 Id: kiola-request-group
 Title: "KIOLA Request Group"
-Description: "KIOLA Profile for request groups."
+Description: "KIOLA profile for request groups."
 
 * instantiatesCanonical 1..1 MS // TODO:sbe this strict? => would need slicing otherwise
 * instantiatesCanonical only Canonical(KIOLAPlanDefinition)
@@ -56,16 +62,17 @@ Profile: KIOLAMeasurementServiceRequest
 Parent: ServiceRequest
 Id: kiola-service-request-measurement
 Title: "KIOLA Measurement Request"
-Description: "KIOLA Profile for service request for measurements."
+Description: "Request for a KIOLA vital data measurement."
 
 * . ^short = "A request to measure vital data and document the results"
 * instantiatesCanonical 1..1  // TODO:sbe this strict? => would need slicing otherwise
 * instantiatesCanonical only Canonical(KIOLAActivityDefinitionMeasurement)
 * instantiatesCanonical ^short = "The measurement definition this request is based on"
-//* category 1.. MS
-//* category = http://fhir.ehealth-systems.at/kiola/servicerequest/category#kiola-vital-data-measurement
+// TODO: slicing, one code must be of measurement types
 * code 1..1 MS
-* code from KIOLAMeasurementTypes (extensible)
+* code from KIOLAMeasurementTypes // FUTURE: (extensible) -> fallback in client
+//* category 1.. MS <- needed when code becomes extensible
+//* category = http://fhir.ehealth-systems.at/kiola/servicerequest/category#kiola-vital-data-measurement
 * code ^short = "The kind of measurement that should be taken"
 * occurrence[x] ^slicing.discriminator.type = #type
 * occurrence[x] ^slicing.discriminator.path = "$this"
@@ -98,47 +105,3 @@ Description: "KIOLA Profile for service request for measurements."
 * performer[manualEntry] ^short = "Measurements can be entered manually"
 * performer[manualEntry] ^type.aggregation = #contained
 * performer[manualEntry] only Reference(KIOLADeviceManualEntry)
-
-
-Profile: KIOLADevice
-Parent: Device
-Id: kiola-device-measurement
-Title: "KIOLA Measurement Device"
-Description: "Device for recording a measurement"
-* definition only Reference(KIOLADeviceDefinition)
-* type ^short = "Type of measurement recording device"
-* type from KIOLAMeasurementDeviceTypes
-* type 1..1 MS
-* property ^slicing.discriminator.type = #value
-* property ^slicing.discriminator.path = "type"
-* property ^slicing.rules = #open
-* property ^slicing.description = "foo"
-* property ^slicing.ordered = false
-* property contains uiReference 0..1 MS
-* property[uiReference] ^short = "UI reference which is used to display the device on a client"
-* property[uiReference].type = http://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
-* property[uiReference].valueQuantity ..0
-* property[uiReference].valueCode 1..1 MS
-* property[uiReference].valueCode from KMCUIReferences (example)
-
-Profile: KIOLADeviceAutomaticTransmission
-Parent: KIOLADevice
-Id: kiola-device-automatic-transmission
-Title: "KIOLA Automatic Transmission Device"
-Description: "KIOLA device supporting automatic transmission of measurements"
-* definition only Reference(KIOLADeviceDefinitionAutomaticTransmission)
-* type from KIOLAAutomaticTransmissionMeasurementDeviceTypes
-* property contains appPackage 0..1 MS
-* property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
-* property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
-* property[appPackage].valueQuantity ..0
-* property[appPackage].valueCode 1..1 MS
-* property[appPackage].valueCode from KMCAppPackages (example)
-
-Profile: KIOLADeviceManualEntry
-Parent: KIOLADevice
-Id: kiola-device-manual-entry
-Title: "KIOLA Manual Entry Device"
-Description: "KIOLA device supporting manual data entry of measurements"
-* definition only Reference(KIOLADeviceDefinitionManualEntry)
-* type = http://fhir.ehealth-systems.at/kiola/device#SDC

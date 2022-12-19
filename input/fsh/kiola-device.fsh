@@ -1,8 +1,9 @@
-Profile: KIOLADeviceDefinition
-Parent: DeviceDefinition
-Id: kiola-devicedefinition-measurement
-Title: "KIOLA Measurement Device Definition"
-Description: "Definition of an abstract device for recording a KIOLA vital data measurement"
+Profile: KIOLADevice
+Parent: Device
+Id: kiola-device-measurement
+Title: "KIOLA Measurement Device"
+Description: "Abstract device for recording a KIOLA vital data measurement"
+* definition only Reference(KIOLADeviceDefinition)
 * type ^short = "Type of measurement recording device"
 * type from KIOLAMeasurementDeviceTypes
 * type 1..1 MS
@@ -18,11 +19,12 @@ Description: "Definition of an abstract device for recording a KIOLA vital data 
 * property[uiReference].valueCode 1..1 MS
 * property[uiReference].valueCode from KMCUIReferences (example)
 
-Profile: KIOLADeviceDefinitionAutomaticTransmission
-Parent: KIOLADeviceDefinition
-Id: kiola-devicedefinition-measurement-automatic-transmission
-Title: "KIOLA Automatic Transmission Device Definition"
-Description: "Definition of a device supporting automatic transmission of KIOLA vital data measurements from a measurement device"
+Profile: KIOLADeviceAutomaticTransmission
+Parent: KIOLADevice
+Id: kiola-device-measurement-automatic-transmission
+Title: "KIOLA Automatic Transmission Device"
+Description: "Device supporting automatic transmission of KIOLA vital data measurements from a measurement device"
+* definition only Reference(KIOLADeviceDefinitionAutomaticTransmission)
 * type from KIOLAAutomaticTransmissionMeasurementDeviceTypes
 * property contains appPackage 0..1 MS
 * property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
@@ -31,9 +33,10 @@ Description: "Definition of a device supporting automatic transmission of KIOLA 
 * property[appPackage].valueCode 1..1 MS
 * property[appPackage].valueCode from KMCAppPackages (example)
 
-Profile: KIOLADeviceDefinitionManualEntry
-Parent: KIOLADeviceDefinition
-Id: kiola-devicedefinition-measurement-manual-entry
-Title: "KIOLA Manual Entry Device Definition"
-Description: "Definition of a device supporting manual data entry of KIOLA vital data measurements"
+Profile: KIOLADeviceManualEntry
+Parent: KIOLADevice
+Id: kiola-device-measurement-manual-entry
+Title: "KIOLA Manual Entry Device"
+Description: "Device supporting manual data entry of KIOLA vital data measurements"
+* definition only Reference(KIOLADeviceDefinitionManualEntry)
 * type = http://fhir.ehealth-systems.at/kiola/device#SDC

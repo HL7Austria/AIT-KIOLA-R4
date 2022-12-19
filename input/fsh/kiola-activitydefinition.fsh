@@ -2,7 +2,7 @@ Profile: KIOLAActivityDefinitionMeasurement
 Parent: ActivityDefinition
 Id: kiola-activity-definition-measurement
 Title: "KIOLA Measurement Definition"
-Description: "KIOLA profile to define measurement activity definitions."
+Description: "Definition of a vital data measurement for KIOLA."
 
 * . ^short = "A definition of a request to measure vital data and document the results"
 * kind 1..1
