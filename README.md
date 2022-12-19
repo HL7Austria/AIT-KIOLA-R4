@@ -18,19 +18,17 @@ Somewhat current versions of the software and a base template are currently loca
 
     \\file01.arc.local\HB\095_HIS\070_HIS-Entwicklung\KIOLA\FHIR_IG
 
-For the most current versions, check the FSH docs or consult the search engine of your choice.
+For the most current versions, check the FSH docs or consult the search engine of your choice. The latest release of the publisher can be found here: https://github.com/HL7/fhir-ig-publisher/releases
 
-The following software is required to build the IG, simply copy them into the respective folders:
+The following JAR files are required to build the IG and/or validate FHIR resources with the generated IG, simply copy them into the respective folders:
+* publisher.jar -> ./input-cache/ (this needs to be updated regularily, the install script that should do this is currently broken)
 * validator_cli.jar -> ./
-* (optionally) publisher.jar -> ./input-cache/ (not required to do manually, the setup script should download the most current version)
 
-Additionally, a base template is required.
-
-You can extract the content of the template.zip into the respective subfolder (./template) or create/download another template. In the future we might have a separate repository for this.
+Additionally, a base template is required. You can extract the content of the template.zip into the respective subfolder (./template) or create/download another template. In the future we might have a separate repository for this.
 
 ### Installation
 
-Before starting the build for the first time, run the setup script:
+Before starting the build for the first time, or if an update of the publisher is required (if the build suddenly fails without changing anything in the sources), run the setup script:
 
     ./install.sh
 
@@ -42,5 +40,14 @@ To trigger a new build, simply execute the build script:
 
 The first build downloads an caches the official base resources, so it might take a little longer.
 
-In certain conditions the build process takes very long (dependency analysis). You probably want to kill the build process manually in this case, all of the important resources should have been already generated up to this point anyway.
+### Output
 
+The output can be found in the respective subfolder (./output). The HTML can simply be opened from the file system using any browser (.output/index.html).
+
+## Validation of FHIR Resources
+
+To check if a FHIR resource is valid according to the IG, simply run the following command:
+
+    java -jar validator_cli.jar [JSON_RESOURCE_FILE] -ig ./fsh-generated/resources/ -version 4.0.1
+
+Note that the resource has to contain the URL of the corresponding profile in the meta tag, for the command to work as intended (see https://www.hl7.org/fhir/resource.html#Meta). Alternatively you might specify which profile should be used to check the resource (see the help ouput for all options).
