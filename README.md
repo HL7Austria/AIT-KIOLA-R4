@@ -39,3 +39,15 @@ To trigger a new build, simply execute the build script:
     ./build.sh
 
 The first build downloads an caches the official base resources, so it might take a little longer.
+
+### Output
+
+The output can be found in the respective subfolder (./output). The HTML can simply be opened from the file system using any browser (.output/index.html).
+
+## Validation of FHIR Resources
+
+To check if a FHIR resource is valid according to the IG, simply run the following command:
+
+    java -jar validator_cli.jar [JSON_RESOURCE_FILE] -ig ./fsh-generated/resources/ -version 4.0.1
+
+Note that the resource has to contain the URL of the corresponding profile in the meta tag, for the command to work as intended (see https://www.hl7.org/fhir/resource.html#Meta). Alternatively you might specify which profile should be used to check the resource (see the help ouput for all options).
