@@ -2,7 +2,8 @@ Profile: KIOLADevice
 Parent: Device
 Id: kiola-device-measurement
 Title: "KIOLA Measurement Device"
-Description: "Abstract device for recording a KIOLA vital data measurement"
+Description: "An abstract device for recording a KIOLA vital data measurement."
+* ^abstract = true
 * definition only Reference(KIOLADeviceDefinition)
 * type ^short = "Type of measurement recording device"
 * type from KIOLAMeasurementDeviceTypes
@@ -22,8 +23,8 @@ Description: "Abstract device for recording a KIOLA vital data measurement"
 Profile: KIOLADeviceAutomaticTransmission
 Parent: KIOLADevice
 Id: kiola-device-measurement-automatic-transmission
-Title: "KIOLA Automatic Transmission Device"
-Description: "Device supporting automatic transmission of KIOLA vital data measurements from a measurement device"
+Title: "KIOLA Measurement Automatic Transmission Device"
+Description: "Device supporting automatic transmission of KIOLA vital data measurements, without entering the data manually."
 * definition only Reference(KIOLADeviceDefinitionAutomaticTransmission)
 * type from KIOLAAutomaticTransmissionMeasurementDeviceTypes
 * property contains appPackage 0..1 MS
@@ -36,7 +37,7 @@ Description: "Device supporting automatic transmission of KIOLA vital data measu
 Profile: KIOLADeviceManualEntry
 Parent: KIOLADevice
 Id: kiola-device-measurement-manual-entry
-Title: "KIOLA Manual Entry Device"
-Description: "Device supporting manual data entry of KIOLA vital data measurements"
+Title: "KIOLA Measurement Manual Entry Device"
+Description: "Device supporting manual data entry of KIOLA vital data measurements."
 * definition only Reference(KIOLADeviceDefinitionManualEntry)
 * type = http://fhir.ehealth-systems.at/kiola/device#SDC

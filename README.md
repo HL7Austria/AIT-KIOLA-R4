@@ -4,9 +4,17 @@ This is the official FHIR® Impletation Guide (*FHIR IG*) for KIOLA.
 
 For a quick introduction into FHIR IGs see: https://fire.ly/blog/fhir-profiles-and-implementation-guides/ for the official documenation see: https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation and https://www.hl7.org/fhir/implementationguide.html
 
+## Development
+
+The implementation guide is written using FHIR Shorthand (= *FSH*, aka *fish*).
+
+For more info, check the following links:
+* Reference: https://hl7.org/fhir/uv/shorthand/reference.html
+* Deep Dive: https://fshschool.org/courses/fsh-seminar/04-deep-dive-with-fsh.html
+
 ## Building from Source
 
-The IG is built from the FSH (= *FHIR Shorthand*, aka *fish*) files using Sushi, see https://fshschool.org/docs/ for more information. The output is a HTML website with a human readable documentation along with FHIR resources describing the IG in a machine readable way, which might be used for automatic validation of FHIR resources (mainly StructureDefinitions as JSON files).
+The IG is built from the FSH files using SUSHI (= *SUSHI Unshortens ShortHand Inputs*), see https://fshschool.org/docs/ for more information. The output is a HTML website with a human readable documentation along with FHIR resources describing the IG in a machine readable way, which might be used for automatic validation of FHIR resources (mainly StructureDefinitions as JSON files).
 
 ### OS Level Requirements
 

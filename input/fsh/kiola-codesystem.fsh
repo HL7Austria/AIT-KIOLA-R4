@@ -1,37 +1,37 @@
 CodeSystem:  KIOLADeviceCS
 Id: kiola-device-cs
-Title: "KIOLA Device Code System"
-Description:  ""
+Title: "KIOLA Device Codes"
+Description:  "Generic device types that can transmit vital data."
 * ^url = "http://fhir.ehealth-systems.at/kiola/device"
-* #SDC "Structured Data Capture" ""
+* #SDC "Structured Data Capture" "A device to manually enter vital data using a questionnaire."
 
 CodeSystem:  KIOLAMDCCS
 Id: kiola-mdc-cs
-Title: "KIOLA MDC Code System"
-Description:  "A subset/extension of MDC codes for KIOLA"
+Title: "KIOLA Device Codes AIT 11073"
+Description: "Measurement device types for automatic transmission of measurements and their configuration parameters, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code."
 * ^url = "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
 * ^hierarchyMeaning = #is-a
 // * ^content = #fragment
 // ^supplements TODO: extend urn:iso:std:iso:11073:10101 (issue: code is actually display)
-* #Device "MDC Device" ""
-  * #MDC_DEV_SPEC_PROFILE_GLUCOSE "Glucose monitor" "A glucose monitor"
+* #MDC_DEV_SPEC "KIOLA measurement device" "A KIOLA measurement device, using an MDC display name as code."
+  * #MDC_DEV_SPEC_PROFILE_GLUCOSE "Glucose monitor" "A blood glucose monitor."
   * #MDC_DEV_SPEC_PROFILE_SCALE "Body weight scale" ""
   * #MDC_DEV_SPEC_PROFILE_BP "Blood pressure device" ""
   * #MDC_DEV_SPEC_PROFILE_TEMP "Temperature measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_SPIRO "Spirometry device" ""
   * #MDC_DEV_SPEC_PROFILE_PULS_OXIM "Blood pressure device" ""
-  * #MDC_DEV_SPEC_PROFILE_INR "INR measurement device" ""
-  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_RESULT "Cardio Ergo" ""
-  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_CONFIG "Cardio Ergo" ""
-  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_RESULT "Cardio Ebike" ""
-  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_CONFIG "Cardio Ebike" ""
+  * #MDC_DEV_SPEC_PROFILE_INR "INR measurement device" "A device to measure the International Normalized Ratio."
+  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_RESULT "Cardio ergo result" "A device used to specify the cardio measurements of an ergometer."
+  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_CONFIG "Cardio ergo config" "A device used to specify the configuration of a cardio measurement using an ergometer."
+  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_RESULT "Cardio ebike result" "A device used to specify the cardio measurements of an ebike."
+  * #MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_CONFIG "Cardio ebike config" "A device used to specify the configuration of a cardio measurement using an ebike."
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_SMWT "6-Minute-Walk-Test measurement" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_ACTIVITY "Activity measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_STEPCOUNTER "Step counter device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE "Stepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_SLEEPSEQUENCE "Sleepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG "Getemed ECG" ""
-* #Property "MDC Device Property" ""
+* #MDC_PROPERTY "KIOLA device property" "A property of a KIOLA measurement device. Used to describe fields of a specific measurement."
   * #MDC_ATTR_TIME_ABS "" ""
   * #MDC_CONC_GLU_ARTERIAL_WHOLEBLOOD "" ""
   * #MDC_CONC_GLU_ARTERIAL_PLASMA "" ""
@@ -45,21 +45,10 @@ Description:  "A subset/extension of MDC codes for KIOLA"
   * #MDC_CONC_GLU_CAPILLARY_WHOLEBLOOD "" ""
   * #MDC_CONC_GLU_UNDETERMINED_PLASMA "" ""
   * #MDC_CONC_HBA1C "" ""
-  * #MDC_PRESS_BLD_NONINV_SYS "" ""
-  * #MDC_PRESS_BLD_NONINV_DIA "" ""
-  * #MDC_PRESS_BLD_NONINV_MEAN "" ""
-  * #MDC_PULS_RATE_NON_INV "" ""
-  * #MDC_VND_AIT_ABDOMINAL_GIRTH "" ""
-  * #MDC_MASS_BODY_ACTUAL "" ""
-  * #MDC_VND_AIT_ACTIVITY_DURATION "" ""
   * #MDC_HF_HR "" ""
   * #MDC_HF_ACTIVITY_TIME "" ""
   * #MDC_HF_DISTANCE "" ""
   * #MDC_HF_STEPCOUNT "" ""
-  * #MDC_VND_AIT_STEPS_SEQUENCE "" ""
-  * #MDC_VND_AIT_DISTANCE_CONFIDENCE_SCORE "" ""
-  * #MDC_VND_AIT_HF_CAD_MIN_USER "" ""
-  * #MDC_VND_AIT_HF_POWER_STEP_SEQ "" ""
   * #MDC_HF_HR_MAX_USER "" ""
   * #MDC_HF_ALT_GAIN "" ""
   * #MDC_HF_ALT_LOSS "" ""
@@ -98,14 +87,25 @@ Description:  "A subset/extension of MDC codes for KIOLA"
   * #MDC_HF_3D_ANG_ACC_Y "" ""
   * #MDC_HF_3D_ANG_ACC_Z "" ""
   * #MDC_HF_RESP_RATE "" ""
+  * #MDC_PRESS_BLD_NONINV_SYS "" ""
+  * #MDC_PRESS_BLD_NONINV_DIA "" ""
+  * #MDC_PRESS_BLD_NONINV_MEAN "" ""
+  * #MDC_PULS_RATE_NON_INV "" ""
+  * #MDC_MASS_BODY_ACTUAL "" ""
+  * #MDC_VND_AIT_ABDOMINAL_GIRTH "" ""
+  * #MDC_VND_AIT_ACTIVITY_DURATION "" ""
+  * #MDC_VND_AIT_STEPS_SEQUENCE "" ""
+  * #MDC_VND_AIT_DISTANCE_CONFIDENCE_SCORE "" ""
+  * #MDC_VND_AIT_HF_CAD_MIN_USER "" ""
+  * #MDC_VND_AIT_HF_POWER_STEP_SEQ "" ""
   * #MDC_VND_AIT_HF_MOTOR_OUT "" ""
   * #MDC_VND_AIT_HF_POWER_TARGET "" ""
   * #MDC_VND_AIT_HF_DISTANCE_SEQUENCE "" ""
 
 CodeSystem: KIOLADeviceKMCCS
 Id: kiola-device-kmc-cs
-Title: "KIOLA KMC Code System"
-Description:  ""
+Title: "KMC Device Codes"
+Description: "Various codes that might be used to configure a mobile client."
 * ^url = "http://fhir.ehealth-systems.at/kiola/device/kmc"
 * ^hierarchyMeaning = #is-a
 * #app_package "App package that handles the data transmission from the device" ""
@@ -122,8 +122,8 @@ Description:  ""
 
 CodeSystem:  KIOLAMDCDIMCS
 Id: kiola-mdc-dim-cs
-Title: "KIOLA MDC Dimension Code System"
-Description:  "A subset/extension of MDC Dimension codes for KIOLA"
+Title: "KIOLA Dimension Codes AIT 11073"
+Description: "Measurement dimensions supported by KIOLA, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code."
 * ^url = "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
@@ -143,10 +143,9 @@ Description:  "A subset/extension of MDC Dimension codes for KIOLA"
 
 CodeSystem: KIOLAMeasurementCS
 Id: kiola-measurement-cs
-Title: "KIOLA Measurement Code System"
-Description:  ""
+Title: "KIOLA Measurement Codes"
+Description: "Types of vital data measurements that can be transmitted to a KIOLA system. The naming is derived from MDC display names of devices from the ISO/IEEE 11073 standard."
 * ^url = "http://fhir.ehealth-systems.at/kiola/measurement"
-// ^supplements TODO: extend urn:iso:std:iso:11073:10101 (issue: code is actually display)
 * #MDC_DEV_SPEC_PROFILE_GLUCOSE "Blood glucose measurement" ""
 * #MDC_DEV_SPEC_PROFILE_BP "Blood pressure measurement" ""
 * #MDC_DEV_SPEC_PROFILE_INR "Measurement of INR" ""
@@ -193,24 +192,25 @@ Description:  ""
 CodeSystem:  KIOLACarePlanCategoryCS
 Id: kiola-care-plan-category-cs
 Title: "KIOLA Care Plan Category Code System"
-Description:  ""
+Description:  "Categories of care plans supported by KIOLA."
 * ^url = "http://fhir.ehealth-systems.at/kiola/careplan/category"
-* #kiola-care-plan "KIOLA Care Plan" ""
+* #kiola-care-plan "KIOLA Care Plan" "Main care plan, that is used to describe the overall plan of a patient. All other care plans to be considered for a patients care, must be part of this care plan."
 
 
-CodeSystem:  KIOLAServiceRequestCategoryCS
-Id: kiola-service-request-cs
-Title: "KIOLA Service Request Category Code System"
-Description:  ""
-* ^url = "http://fhir.ehealth-systems.at/kiola/servicerequest/category"
-* #kiola-vital-data-measurement "Vital Data Measurement" ""
+// FUTURE: when code in service request becomes extensible, we need a category
+//CodeSystem:  KIOLAServiceRequestCategoryCS
+//Id: kiola-service-request-cs
+//Title: "KIOLA Service Request Category Code System"
+//Description:  ""
+//* ^url = "http://fhir.ehealth-systems.at/kiola/servicerequest/category"
+//* #kiola-vital-data-measurement "Vital Data Measurement" ""
 
 
 CodeSystem:  KIOLACarePlanTransientTagCS
 Id: kiola-care-plan-transient-tag-ts
 Title: "KIOLA Care Plan Transient Tag Code System"
-Description:  ""
+Description:  "Meta data tags of care plans that should be removed when creating an updated plan for a patient, in case an activity changes."
 * ^url = "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
-* #SENSOR_CONFIGURATION "Sensor configuration" ""
+* #SENSOR_CONFIGURATION "Sensor configuration" "KIOLA ID of the associated (legacy) sensor configuration."
