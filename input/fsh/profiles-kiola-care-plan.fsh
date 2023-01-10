@@ -8,7 +8,6 @@ that might have been adapted individually for the patient, and/or individually a
 Only care plans with status active and intent order should be considered for actual patient care, and 
 only one such plan might exist at one point in time. Other care plans with this status and intent might be distinguished by using a different category.
 Furthermore, only care plan activities with status active should be considered."
-
 * . ^short = "KIOLA care plan for a single patient"
 * subject only Reference(Patient)
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier"
@@ -23,37 +22,36 @@ Furthermore, only care plan activities with status active should be considered."
 * instantiatesCanonical ^slicing.rules = #open
 * instantiatesCanonical ^slicing.description = ""
 * instantiatesCanonical ^slicing.ordered = false
-* instantiatesCanonical contains kiolaStandardTreatmentPlanDefinition 0..*
-* instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] ^short = "Standard treatment plan definitions, this care plan is based on."
-* instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] ^definition = "All contained treatment plans should be present here.
+* instantiatesCanonical contains kiolaStandardTreatmentPlan 0..*
+* instantiatesCanonical[kiolaStandardTreatmentPlan] ^short = "Standard treatment plans, this care plan is based on."
+* instantiatesCanonical[kiolaStandardTreatmentPlan] ^definition = "All contained treatment plans should be present here.
 It is also permitted to add references to other treatment plan definitions, without a corresponding treatment plan in the actions element.
 
 This list should be used to specify/determine which standard treatment plans the patient is treated with. "
-* instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] only Canonical(KIOLAStandardTreatmentPlanDefinition)
+* instantiatesCanonical[kiolaStandardTreatmentPlan] only Canonical(KIOLAStandardTreatmentPlan)
 * activity MS
 * activity ^slicing.discriminator.type = #profile
 * activity ^slicing.discriminator.path = "reference.resolve()"
 * activity ^slicing.rules = #open
 * activity ^slicing.description = "All other activities, which do not fall into these sliced, should be ignored."
 * activity ^slicing.ordered = false
-* activity contains kiolaStandardTreatmentPlan 0..* MS and kiolaMeasurementRequest 0..* MS
-* activity[kiolaStandardTreatmentPlan] ^short = "Instance of a standard treatment plan, which might have been individualized for the patient"
-* activity[kiolaStandardTreatmentPlan].reference 1..1 MS
-* activity[kiolaStandardTreatmentPlan].reference only Reference(KIOLAStandardTreatmentPlan)
-* activity[kiolaStandardTreatmentPlan].reference ^type.aggregation = #contained
+* activity contains kiolaTreatmentPlan 0..* MS and kiolaMeasurementRequest 0..* MS
+* activity[kiolaTreatmentPlan] ^short = "Instance of a standard treatment plan, which might have been individualized for the patient"
+* activity[kiolaTreatmentPlan].reference 1..1 MS
+* activity[kiolaTreatmentPlan].reference only Reference(KIOLATreatmentPlan)
+* activity[kiolaTreatmentPlan].reference ^type.aggregation = #contained
 * activity[kiolaMeasurementRequest] ^short = "Patient-specific measurements"
 * activity[kiolaMeasurementRequest].reference 1..1 MS
 * activity[kiolaMeasurementRequest].reference only Reference(KIOLAMeasurementRequest)
 * activity[kiolaMeasurementRequest].reference ^type.aggregation = #contained
 
 
-Profile: KIOLAStandardTreatmentPlan
+Profile: KIOLATreatmentPlan
 Parent: RequestGroup
-Id: kiola-standard-treatment-plan
-Title: "KIOLA Standard Treatment Plan"
-Description: "Instance of a KIOLA standard treatment plan definition, that might have been adapted individually for the patient."
-
-* . ^short = "KIOLA standard treatment plan, eventually adapted for the patient"
+Id: kiola-treatment-plan
+Title: "KIOLA Treatment Plan"
+Description: "Instance of a KIOLA standard treatment plan, that might have been adapted individually for the patient."
+* . ^short = "KIOLA treatment plan, eventually adapted for the patient"
 * subject only Reference(Patient)
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier. If present, shall conform to the subject of the care plan that this treatment plan is part of."
 * subject.reference ^short = "Reference to a patient resource linked to a KIOLA subject"
@@ -65,9 +63,9 @@ Description: "Instance of a KIOLA standard treatment plan definition, that might
 * instantiatesCanonical ^slicing.rules = #open
 * instantiatesCanonical ^slicing.description = ""
 * instantiatesCanonical ^slicing.ordered = false
-* instantiatesCanonical contains kiolaStandardTreatmentPlanDefinition 1..1
-* instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] ^short = "Standard treatment plan defintion, this treatment plan is based on."
-* instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] only Canonical(KIOLAStandardTreatmentPlanDefinition)
+* instantiatesCanonical contains kiolaStandardTreatmentPlan 1..1
+* instantiatesCanonical[kiolaStandardTreatmentPlan] ^short = "Standard treatment plan, this treatment plan is based on."
+* instantiatesCanonical[kiolaStandardTreatmentPlan] only Canonical(KIOLAStandardTreatmentPlan)
 * action MS
 // FIXME:sbe slicing somehow does not seem to work with the validator (change to closed to get more detailed output), the code below seems to work
 //* action ^short = "Measurement requests, corresponding to the treatment plan definition."
@@ -78,7 +76,7 @@ Description: "Instance of a KIOLA standard treatment plan definition, that might
 //* action.resource ^type.aggregation = #contained
 * action ^slicing.discriminator.type = #profile
 * action ^slicing.discriminator.path = "resource.resolve()" // FIXME:sbe does not seem to work in validator
-* action ^slicing.rules = #closed
+* action ^slicing.rules = #open
 * action ^slicing.description = "foo"
 * action ^slicing.ordered = false
 * action contains kiolaMeasurementRequests 0..* MS
@@ -92,10 +90,9 @@ No action shall be added that does not correspond to an action in the definition
 
 Profile: KIOLAMeasurementRequest
 Parent: ServiceRequest
-Id: kiola-service-request-measurement
+Id: kiola-measurement-request
 Title: "KIOLA Measurement Request"
 Description: "Request to perform a KIOLA vital data measurement."
-
 * . ^short = "A request to measure vital data and document the results"
 * subject only Reference(Patient)
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier. If present, shall conform to the subject of the care plan that this treatment plan is part of."
@@ -110,7 +107,7 @@ Description: "Request to perform a KIOLA vital data measurement."
 * instantiatesCanonical ^slicing.ordered = false
 * instantiatesCanonical contains kiolaMeasurementDefinition 1..1
 * instantiatesCanonical[kiolaMeasurementDefinition] ^short = "The measurement definition this request is based on"
-* instantiatesCanonical[kiolaMeasurementDefinition] only Canonical(KIOLAActivityDefinitionMeasurement)
+* instantiatesCanonical[kiolaMeasurementDefinition] only Canonical(KIOLAMeasurementDefinition)
 * code 1..1 MS
 * code from KIOLAMeasurementTypes
 // FUTURE: (extensible) -> fallback in client
@@ -138,7 +135,7 @@ Description: "Request to perform a KIOLA vital data measurement."
 * occurrence[x][measurementInterval].repeat.periodUnit = #d
 // FIXME:sbe slicing somehow does not seem to work with the validator (change to closed to get more detailed output), the code below seems to work
 //* performer 1..2
-//* performer only Reference(KIOLADeviceManualEntry or KIOLADeviceAutomaticTransmission)
+//* performer only Reference(KIOLAMeasurementManualEntryDevice or KIOLAMeasurementAutomaticTransmissionDevice)
 * performer 1..*
 * performer only Reference(Device)
 * performer ^slicing.discriminator.type = #value
@@ -149,7 +146,51 @@ Description: "Request to perform a KIOLA vital data measurement."
 * performer contains automaticTransmission 0..1 MS and manualEntry 0..1 MS
 * performer[automaticTransmission] ^short = "Measurements might be transmitted automatically by a device like this"
 * performer[automaticTransmission] ^type.aggregation = #contained
-* performer[automaticTransmission] only Reference(KIOLADeviceAutomaticTransmission)
+* performer[automaticTransmission] only Reference(KIOLAMeasurementAutomaticTransmissionDevice)
 * performer[manualEntry] ^short = "Measurements might be entered manually using a device like this"
 * performer[manualEntry] ^type.aggregation = #contained
-* performer[manualEntry] only Reference(KIOLADeviceManualEntry)
+* performer[manualEntry] only Reference(KIOLAMeasurementManualEntryDevice)
+
+Profile: KIOLAMeasurementDevice
+Parent: Device
+Id: kiola-measurement-device
+Title: "KIOLA Measurement Device"
+Description: "An abstract device for recording a KIOLA vital data measurement."
+* ^abstract = true
+* definition only Reference(KIOLAMeasurementDeviceDefinition)
+* type ^short = "Type of measurement recording device"
+* type from KIOLAMeasurementDeviceTypes
+* type 1..1 MS
+* property ^slicing.discriminator.type = #value
+* property ^slicing.discriminator.path = "type"
+* property ^slicing.rules = #open
+* property ^slicing.description = "foo"
+* property ^slicing.ordered = false
+* property contains uiReference 0..1 MS
+* property[uiReference] ^short = "UI reference which is used to display the device on a client"
+* property[uiReference].type = http://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
+* property[uiReference].valueQuantity ..0
+* property[uiReference].valueCode 1..1 MS
+* property[uiReference].valueCode from KMCUIReferences (example)
+
+Profile: KIOLAMeasurementAutomaticTransmissionDevice
+Parent: KIOLAMeasurementDevice
+Id: kiola-measurement-automatic-transmission-device
+Title: "KIOLA Measurement Automatic Transmission Device"
+Description: "Device supporting automatic transmission of KIOLA vital data measurements, without entering the data manually."
+* definition only Reference(KIOLAMeasurementAutomaticTransmissionDeviceDefinition)
+* type from KIOLAMeasurementAutomaticTransmissionDeviceTypes
+* property contains appPackage 0..1 MS
+* property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
+* property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
+* property[appPackage].valueQuantity ..0
+* property[appPackage].valueCode 1..1 MS
+* property[appPackage].valueCode from KMCAppPackages (example)
+
+Profile: KIOLAMeasurementManualEntryDevice
+Parent: KIOLAMeasurementDevice
+Id: kiola-measurement-manual-entry-device
+Title: "KIOLA Measurement Manual Entry Device"
+Description: "Device supporting manual data entry of KIOLA vital data measurements."
+* definition only Reference(KIOLAMeasurementManualEntryDeviceDefinition)
+* type = http://fhir.ehealth-systems.at/kiola/device#SDC

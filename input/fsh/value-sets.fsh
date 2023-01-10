@@ -14,9 +14,9 @@ ValueSet: KIOLAMeasurementDeviceTypes
 Title: "KIOLA Measurement Device Types"
 Description: "Types of devices that might transmit vital data measurements to a KIOLA system."
 * include http://fhir.ehealth-systems.at/kiola/device#SDC
-* include codes from valueset KIOLAAutomaticTransmissionMeasurementDeviceTypes
+* include codes from valueset KIOLAMeasurementAutomaticTransmissionDeviceTypes
 
-ValueSet: KIOLAAutomaticTransmissionMeasurementDeviceTypes
+ValueSet: KIOLAMeasurementAutomaticTransmissionDeviceTypes
 Title: "KIOLA Automatic Transmission Measurement Device Types"
 Description: "Types of devices that might automatically transmit vital data measurements to a KIOLA system, without entering the data manually."
 * include codes from system http://fhir.ehealth-systems.at/kiola/device/AIT-11073 where concept is-a #MDC_DEV_SPEC

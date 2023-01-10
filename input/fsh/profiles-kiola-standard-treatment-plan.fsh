@@ -1,9 +1,8 @@
-Profile: KIOLAStandardTreatmentPlanDefinition
+Profile: KIOLAStandardTreatmentPlan
 Parent: PlanDefinition
-Id: kiola-standard-treatment-plan-definition
-Title: "KIOLA Standard Treatment Plan Definition"
-Description: "Standard treatment plan definition for a set of KIOLA activities. Can be applied to patients as a stand-alone plan or in combination with other plans. Might be individualized for a single patient, after applying it."
-
+Id: kiola-standard-treatment-plan
+Title: "KIOLA Standard Treatment Plan"
+Description: "Standard treatment plan for a set of KIOLA activities. Can be applied to patients as a stand-alone plan or in combination with other plans. Might be individualized for a single patient, after applying it."
 * . ^short = "Standard treatment plan for a set of KIOLA activities"
 * url 1..1 MS
 * url ^short = "The URI of this standard plan, used to identify which standard plans a patient is enrolled to. Currently, versioning is not supported."
@@ -18,7 +17,7 @@ Description: "Standard treatment plan definition for a set of KIOLA activities. 
 * action[kiolaMeasurement] ^short = "Measurement activities, that are part of this standard plan"
 * action[kiolaMeasurement].definition[x] ^short = "The definition of the activity. This is the only required element for an action."
 * action[kiolaMeasurement].definition[x] 1..1 MS
-* action[kiolaMeasurement].definition[x] only Canonical(KIOLAActivityDefinitionMeasurement)
+* action[kiolaMeasurement].definition[x] only Canonical(KIOLAMeasurementDefinition)
 * action[kiolaMeasurement].timing[x] ^slicing.discriminator.type = #type
 * action[kiolaMeasurement].timing[x] ^slicing.discriminator.path = "$this"
 * action[kiolaMeasurement].timing[x] ^slicing.rules = #open
@@ -50,10 +49,80 @@ Description: "Standard treatment plan definition for a set of KIOLA activities. 
 * action[kiolaMeasurement].participant[automaticTransmission].extension contains ParticipantDeviceDefinition named participantDeviceDefinition 1..1 MS
 * action[kiolaMeasurement].participant[automaticTransmission].extension[participantDeviceDefinition] ^short = "Either refer to the corresponding device definition of the measurement definition, or to an adapted compatible definition."
 * action[kiolaMeasurement].participant[automaticTransmission].extension[participantDeviceDefinition].valueReference 1..1 MS
-* action[kiolaMeasurement].participant[automaticTransmission].extension[participantDeviceDefinition].valueReference only Reference(KIOLADeviceDefinitionAutomaticTransmission)
+* action[kiolaMeasurement].participant[automaticTransmission].extension[participantDeviceDefinition].valueReference only Reference(KIOLAMeasurementAutomaticTransmissionDeviceDefinition)
 * action[kiolaMeasurement].participant[manualEntry] ^short = "Measurements might be entered manually using a device like specified here"
 * action[kiolaMeasurement].participant[manualEntry].type = #device
 * action[kiolaMeasurement].participant[manualEntry].extension contains ParticipantDeviceDefinition named participantDeviceDefinition 1..1 MS
 * action[kiolaMeasurement].participant[manualEntry].extension[participantDeviceDefinition] ^short = "Either refer to the corresponding device definition of the measurement definition, or to an adapted compatible definition."
 * action[kiolaMeasurement].participant[manualEntry].extension[participantDeviceDefinition].valueReference 1..1 MS
-* action[kiolaMeasurement].participant[manualEntry].extension[participantDeviceDefinition].valueReference only Reference(KIOLADeviceDefinitionManualEntry)
+* action[kiolaMeasurement].participant[manualEntry].extension[participantDeviceDefinition].valueReference only Reference(KIOLAMeasurementManualEntryDeviceDefinition)
+
+Profile: KIOLAMeasurementDefinition
+Parent: ActivityDefinition
+Id: kiola-measurement-definition
+Title: "KIOLA Measurement Definition"
+Description: "Definition of a vital data measurement for KIOLA."
+* . ^short = "A definition of a request to measure vital data and document the results"
+* kind 1..1
+* kind = #ServiceRequest
+* url ^short = "The URI of this measurement definition, used to identify which standard plans a patient is enrolled to. Currently, versioning is not supported."
+* url 1..1 MS
+* name 1..1 MS
+* code ^short = "The kind of measurement that should be taken"
+* code 1..1 MS
+* code from KIOLAMeasurementTypes
+* participant ^slicing.discriminator.type = #value
+* participant ^slicing.discriminator.path = "extension('http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
+* participant ^slicing.rules = #open
+* participant ^slicing.description = "foo"
+* participant ^slicing.ordered = false
+* participant contains automaticTransmission 0..1 MS and manualEntry 0..1 MS
+* participant[automaticTransmission].type = #device
+* participant[automaticTransmission].extension contains ParticipantDeviceDefinition named participantDeviceDefinition 1..1 MS
+* participant[automaticTransmission].extension[participantDeviceDefinition].valueReference 1..1 MS
+* participant[automaticTransmission].extension[participantDeviceDefinition].valueReference only Reference(KIOLAMeasurementAutomaticTransmissionDeviceDefinition)
+* participant[manualEntry].type = #device
+* participant[manualEntry].extension contains ParticipantDeviceDefinition named participantDeviceDefinition 1..1 MS
+* participant[manualEntry].extension[participantDeviceDefinition].valueReference 1..1 MS
+* participant[manualEntry].extension[participantDeviceDefinition].valueReference only Reference(KIOLAMeasurementManualEntryDeviceDefinition)
+
+Profile: KIOLAMeasurementDeviceDefinition
+Parent: DeviceDefinition
+Id: kiola-measurement-device-definition
+Title: "KIOLA Measurement Device Definition"
+Description: "Definition of an abstract device for recording a KIOLA vital data measurement."
+* ^abstract = true
+* type ^short = "Type of measurement recording device"
+* type from KIOLAMeasurementDeviceTypes
+* type 1..1 MS
+* property ^slicing.discriminator.type = #value
+* property ^slicing.discriminator.path = "type"
+* property ^slicing.rules = #open
+* property ^slicing.description = "foo"
+* property ^slicing.ordered = false
+* property contains uiReference 0..1 MS
+* property[uiReference] ^short = "UI reference which is used to display the device on a client"
+* property[uiReference].type = http://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
+* property[uiReference].valueQuantity ..0
+* property[uiReference].valueCode 1..1 MS
+* property[uiReference].valueCode from KMCUIReferences (example)
+
+Profile: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
+Parent: KIOLAMeasurementDeviceDefinition
+Id: kiola-measurement-automatic-transmission-device-definition
+Title: "KIOLA Measurement Automatic Transmission Device Definition"
+Description: "Definition of a device supporting automatic transmission of KIOLA vital data measurements, without entering the data manually."
+* type from KIOLAMeasurementAutomaticTransmissionDeviceTypes
+* property contains appPackage 0..1 MS
+* property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
+* property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
+* property[appPackage].valueQuantity ..0
+* property[appPackage].valueCode 1..1 MS
+* property[appPackage].valueCode from KMCAppPackages (example)
+
+Profile: KIOLAMeasurementManualEntryDeviceDefinition
+Parent: KIOLAMeasurementDeviceDefinition
+Id: kiola-measurement-manual-entry-device-definition
+Title: "KIOLA Measurement Manual Entry Device Definition"
+Description: "Definition of a device supporting manual data entry of KIOLA vital data measurements."
+* type = http://fhir.ehealth-systems.at/kiola/device#SDC
