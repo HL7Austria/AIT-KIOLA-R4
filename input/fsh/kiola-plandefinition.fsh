@@ -10,7 +10,7 @@ Description: "Standard treatment plan definition for a set of KIOLA activities. 
 * name 1..1 MS
 * name ^short = "The name of the standard plan. Corresponds to the name of the KIOLA subject tag, used for e.g. filtering."
 * action ^slicing.discriminator.type = #profile
-* action ^slicing.discriminator.path = "definition[x].resolve()"
+* action ^slicing.discriminator.path = "definition.resolve()"
 * action ^slicing.rules = #open
 * action ^slicing.description = "foo"
 * action ^slicing.ordered = false
@@ -40,7 +40,7 @@ Description: "Standard treatment plan definition for a set of KIOLA activities. 
 * action[kiolaMeasurement].participant ^short = "If present, the given measurement devices override the allowed measurement devices from the activity definition"
 * action[kiolaMeasurement].participant ^definition = "Indicates which devices are allowed to document the measurements. This may only be a subset of the devices defined in the activity definition."
 * action[kiolaMeasurement].participant ^slicing.discriminator.type = #value
-* action[kiolaMeasurement].participant ^slicing.discriminator.path = "extension(http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition).valueReference.resolve().type"
+* action[kiolaMeasurement].participant ^slicing.discriminator.path = "extension('http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
 * action[kiolaMeasurement].participant ^slicing.rules = #open
 * action[kiolaMeasurement].participant ^slicing.description = "foo"
 * action[kiolaMeasurement].participant ^slicing.ordered = false

@@ -14,7 +14,7 @@ Description: "Definition of a vital data measurement for KIOLA."
 * code 1..1 MS
 * code from KIOLAMeasurementTypes
 * participant ^slicing.discriminator.type = #value
-* participant ^slicing.discriminator.path = "extension(http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition).valueReference.resolve().type"
+* participant ^slicing.discriminator.path = "extension('http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
 * participant ^slicing.rules = #open
 * participant ^slicing.description = "foo"
 * participant ^slicing.ordered = false

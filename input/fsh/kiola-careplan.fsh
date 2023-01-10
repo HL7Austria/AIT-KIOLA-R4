@@ -18,8 +18,8 @@ Furthermore, only care plan activities with status active should be considered."
 * subject.identifier.value ^short = "KIOLA UUID of the subject"
 * category 1.. MS
 * category.coding = http://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan
-* instantiatesCanonical ^slicing.discriminator.type = #value
-* instantiatesCanonical ^slicing.discriminator.path = "$this"
+* instantiatesCanonical ^slicing.discriminator.type = #profile
+* instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
 * instantiatesCanonical ^slicing.description = ""
 * instantiatesCanonical ^slicing.ordered = false
@@ -41,7 +41,7 @@ This list should be used to specify/determine which standard treatment plans the
 * activity[kiolaStandardTreatmentPlan].reference 1..1 MS
 * activity[kiolaStandardTreatmentPlan].reference only Reference(KIOLAStandardTreatmentPlan)
 * activity[kiolaStandardTreatmentPlan].reference ^type.aggregation = #contained
-* activity[kiolaMeasurementRequest] ^short = "Patient-specific measurement actions"
+* activity[kiolaMeasurementRequest] ^short = "Patient-specific measurements"
 * activity[kiolaMeasurementRequest].reference 1..1 MS
 * activity[kiolaMeasurementRequest].reference only Reference(KIOLAMeasurementRequest)
 * activity[kiolaMeasurementRequest].reference ^type.aggregation = #contained
@@ -60,8 +60,8 @@ Description: "Instance of a KIOLA standard treatment plan definition, that might
 * subject.identifier MS
 * subject.identifier.system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid"
 * subject.identifier.value ^short = "KIOLA UUID of the subject"
-* instantiatesCanonical ^slicing.discriminator.type = #value
-* instantiatesCanonical ^slicing.discriminator.path = "$this"
+* instantiatesCanonical ^slicing.discriminator.type = #profile
+* instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
 * instantiatesCanonical ^slicing.description = ""
 * instantiatesCanonical ^slicing.ordered = false
@@ -69,8 +69,15 @@ Description: "Instance of a KIOLA standard treatment plan definition, that might
 * instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] ^short = "Standard treatment plan defintion, this treatment plan is based on."
 * instantiatesCanonical[kiolaStandardTreatmentPlanDefinition] only Canonical(KIOLAStandardTreatmentPlanDefinition)
 * action MS
+// FIXME:sbe slicing somehow does not seem to work with the validator (change to closed to get more detailed output), the code below seems to work
+//* action ^short = "Measurement requests, corresponding to the treatment plan definition."
+//* action ^definition = "Measurement requests, corresponding to the activities defined in the treatment plan definition, which might have been individualized for the patient. 
+//No action shall be added that does not correspond to an action in the definition, but actions might be removed."
+//* action.resource 1..1
+//* action.resource only Reference(KIOLAMeasurementRequest)
+//* action.resource ^type.aggregation = #contained
 * action ^slicing.discriminator.type = #profile
-* action ^slicing.discriminator.path = "resource.resolve()"
+* action ^slicing.discriminator.path = "resource.resolve()" // FIXME:sbe does not seem to work in validator
 * action ^slicing.rules = #closed
 * action ^slicing.description = "foo"
 * action ^slicing.ordered = false
@@ -96,8 +103,8 @@ Description: "Request to perform a KIOLA vital data measurement."
 * subject.identifier MS
 * subject.identifier.system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid"
 * subject.identifier.value ^short = "KIOLA UUID of the subject"
-* instantiatesCanonical ^slicing.discriminator.type = #value
-* instantiatesCanonical ^slicing.discriminator.path = "$this"
+* instantiatesCanonical ^slicing.discriminator.type = #profile
+* instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
 * instantiatesCanonical ^slicing.description = ""
 * instantiatesCanonical ^slicing.ordered = false
@@ -129,15 +136,20 @@ Description: "Request to perform a KIOLA vital data measurement."
 * occurrence[x][measurementInterval].repeat.periodMax ^definition = "A patient is only compliant to the service request, if the measurements are taken frequency times per period. However, if the periodMax is reached, an additional warning should be displayed to the user and staff."
 * occurrence[x][measurementInterval].repeat.periodUnit 1..1 MS
 * occurrence[x][measurementInterval].repeat.periodUnit = #d
+// FIXME:sbe slicing somehow does not seem to work with the validator (change to closed to get more detailed output), the code below seems to work
+//* performer 1..2
+//* performer only Reference(KIOLADeviceManualEntry or KIOLADeviceAutomaticTransmission)
+* performer 1..*
+* performer only Reference(Device)
 * performer ^slicing.discriminator.type = #value
 * performer ^slicing.discriminator.path = "resolve().type"
 * performer ^slicing.rules = #open
 * performer ^slicing.description = "foo"
 * performer ^slicing.ordered = false
 * performer contains automaticTransmission 0..1 MS and manualEntry 0..1 MS
-* performer[automaticTransmission] ^short = "Measurements might be transmitted automatically using this device"
+* performer[automaticTransmission] ^short = "Measurements might be transmitted automatically by a device like this"
 * performer[automaticTransmission] ^type.aggregation = #contained
 * performer[automaticTransmission] only Reference(KIOLADeviceAutomaticTransmission)
-* performer[manualEntry] ^short = "Measurements might be entered manually using this device"
+* performer[manualEntry] ^short = "Measurements might be entered manually using a device like this"
 * performer[manualEntry] ^type.aggregation = #contained
 * performer[manualEntry] only Reference(KIOLADeviceManualEntry)
