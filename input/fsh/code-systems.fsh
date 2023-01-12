@@ -11,9 +11,14 @@ Title: "KIOLA Device Codes AIT 11073"
 Description: "Measurement device types for automatic transmission of measurements and their configuration parameters, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code."
 * ^url = "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
 * ^hierarchyMeaning = #is-a
+* ^property[0].code = #abstract
+* ^property[=].type = #boolean
+* ^property[=].description = "True, if an element is considered abstract = not for use."
 // * ^content = #fragment
 // ^supplements TODO: extend urn:iso:std:iso:11073:10101 (issue: code is actually display)
 * #MDC_DEV_SPEC "KIOLA measurement device" "A KIOLA measurement device, using an MDC display name as code."
+  * ^property.code = #abstract
+  * ^property.valueBoolean = true
   * #MDC_DEV_SPEC_PROFILE_GLUCOSE "Glucose monitor" "A blood glucose monitor."
   * #MDC_DEV_SPEC_PROFILE_SCALE "Body weight scale" ""
   * #MDC_DEV_SPEC_PROFILE_BP "Blood pressure device" ""
@@ -32,6 +37,8 @@ Description: "Measurement device types for automatic transmission of measurement
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_SLEEPSEQUENCE "Sleepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG "Getemed ECG" ""
 * #MDC_PROPERTY "KIOLA device property" "A property of a KIOLA measurement device. Used to describe fields of a specific measurement."
+  * ^property.code = #abstract
+  * ^property.valueBoolean = true
   * #MDC_ATTR_TIME_ABS "" ""
   * #MDC_CONC_GLU_ARTERIAL_WHOLEBLOOD "" ""
   * #MDC_CONC_GLU_ARTERIAL_PLASMA "" ""
@@ -123,7 +130,9 @@ Description: "Various codes that might be used to configure a mobile client."
 CodeSystem:  KIOLAMDCDIMCS
 Id: kiola-mdc-dim-cs
 Title: "KIOLA Dimension Codes AIT 11073"
-Description: "Measurement dimensions supported by KIOLA, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code."
+Description: "Measurement dimensions supported by KIOLA, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code.
+
+All codes might be parametrized using the syntax `CODE:{min=MIN_VAL,max=MAX_VAL}` to define a plausibility range for manual data entry, e.g.: `MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}`"
 * ^url = "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
@@ -214,3 +223,14 @@ Description:  "Meta data tags of care plans that should be removed when creating
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
 * #SENSOR_CONFIGURATION "Sensor configuration" "KIOLA ID of the associated (legacy) sensor configuration."
+* #CONFIRMED "Confirmed" "The care plan has been successfully retrieved by a client. Might be parametrized using the userAgent and timestamp parameters, e.g.: `{userAgent=Pixel 4a/13 at.ac.ait.dm2/4.12.0(664):36fde7dd,timestamp=2022-11-25T09:28:29.950008}`"
+
+
+CodeSystem:  KIOLAStandardTreatmentPlanTagCS
+Id: kiola-standard-treatment-plan-tag-ts
+Title: "KIOLA Standard Treatment Plan Code System"
+Description: "Meta data tags of standard treatment plans."
+* ^url = "http://fhir.ehealth-systems.at/artifacts/PlanDefinition/tag"
+* ^content = #fragment  // required for validation with compositional
+* ^compositional = true
+* #default "Default treatment plan" "A default treatment plan, that should be preselected and eventually applied when registering new patients."

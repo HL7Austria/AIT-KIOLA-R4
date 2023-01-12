@@ -13,8 +13,8 @@ Furthermore, only care plan activities with status active should be considered."
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier"
 * subject.reference ^short = "Reference to a patient resource linked to a KIOLA subject"
 * subject.identifier MS
-* subject.identifier.system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid"
-* subject.identifier.value ^short = "KIOLA UUID of the subject"
+* subject.identifier only KIOLASubjectUUIDIdentifier
+* subject.identifier ^short = "KIOLA Subject UUID"
 * category 1.. MS
 * category.coding = http://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan
 * instantiatesCanonical ^slicing.discriminator.type = #profile
@@ -56,8 +56,8 @@ Description: "Instance of a KIOLA standard treatment plan, that might have been 
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier. If present, shall conform to the subject of the care plan that this treatment plan is part of."
 * subject.reference ^short = "Reference to a patient resource linked to a KIOLA subject"
 * subject.identifier MS
-* subject.identifier.system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid"
-* subject.identifier.value ^short = "KIOLA UUID of the subject"
+* subject.identifier only KIOLASubjectUUIDIdentifier
+* subject.identifier ^short = "KIOLA Subject UUID"
 * instantiatesCanonical ^slicing.discriminator.type = #profile
 * instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
@@ -98,8 +98,8 @@ Description: "Request to perform a KIOLA vital data measurement."
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier. If present, shall conform to the subject of the care plan that this treatment plan is part of."
 * subject.reference ^short = "Reference to a patient resource linked to a KIOLA subject"
 * subject.identifier MS
-* subject.identifier.system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid"
-* subject.identifier.value ^short = "KIOLA UUID of the subject"
+* subject.identifier only KIOLASubjectUUIDIdentifier
+* subject.identifier ^short = "KIOLA Subject UUID"
 * instantiatesCanonical ^slicing.discriminator.type = #profile
 * instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
@@ -122,22 +122,25 @@ Description: "Request to perform a KIOLA vital data measurement."
 * occurrence[x] contains measurementInterval 0..1 MS
 * occurrence[x][measurementInterval] only Timing
 * occurrence[x][measurementInterval] ^short = "Measurement interval"
-* occurrence[x][measurementInterval] ^definition = "The measurement interval of this profile. This can be used to measure a patient's compliance to the care plan. A patient is compliant to the service request, if the measurements are taken frequency times per period."
+* occurrence[x][measurementInterval].repeat ^short = "How many times should a measurement be taken per period"
+* occurrence[x][measurementInterval].repeat ^definition = "A patient is only compliant to the service request, if the measurements are taken frequency times per period. A success message may appear, if the requested frequency of measurements is reached in the current period. A warning may be displayed, if the frequency has not been reached in the previous period. If periodMax is set this warning should only be displayed in case the frequency is still not reached after the specified grace period."
 * occurrence[x][measurementInterval].repeat 1..1 MS
+* occurrence[x][measurementInterval].repeat obeys kiola-measurement-interval
 * occurrence[x][measurementInterval].repeat.frequency 1..1 MS
 * occurrence[x][measurementInterval].repeat.frequency ^short = "Measurement should be taken frequency times per period"
 * occurrence[x][measurementInterval].repeat.period 1..1 MS
 * occurrence[x][measurementInterval].repeat.period ^short = "Measurement should be taken frequency times per period"
 * occurrence[x][measurementInterval].repeat.periodMax MS
-* occurrence[x][measurementInterval].repeat.periodMax ^short = "Grace period, until warnings should appear"
+* occurrence[x][measurementInterval].repeat.periodMax ^short = "Grace period"
 * occurrence[x][measurementInterval].repeat.periodMax ^definition = "A patient is only compliant to the service request, if the measurements are taken frequency times per period. However, if the periodMax is reached, an additional warning should be displayed to the user and staff."
 * occurrence[x][measurementInterval].repeat.periodUnit 1..1 MS
-* occurrence[x][measurementInterval].repeat.periodUnit = #d
 // FIXME:sbe slicing somehow does not seem to work with the validator (change to closed to get more detailed output), the code below seems to work
 //* performer 1..2
 //* performer only Reference(KIOLAMeasurementManualEntryDevice or KIOLAMeasurementAutomaticTransmissionDevice)
 * performer 1..*
 * performer only Reference(Device)
+* performer obeys kiola-measurement-supported-devices
+* performer ^definition = "If a performer defines properties that are also applicable for other devices (e.g. allowed measurement units), the properties of the automatic transmission device should have precedence in case there are any conflicts."
 * performer ^slicing.discriminator.type = #value
 * performer ^slicing.discriminator.path = "resolve().type"
 * performer ^slicing.rules = #open
@@ -150,6 +153,10 @@ Description: "Request to perform a KIOLA vital data measurement."
 * performer[manualEntry] ^short = "Measurements might be entered manually using a device like this"
 * performer[manualEntry] ^type.aggregation = #contained
 * performer[manualEntry] only Reference(KIOLAMeasurementManualEntryDevice)
+
+Invariant: kiola-measurement-supported-devices
+Description: "At least one supported device should be present. Otherwise a warning should be displayed when visualizing the care plan and the measurement request should be ignored when interpreting the care plan."
+Severity: #warning
 
 Profile: KIOLAMeasurementDevice
 Parent: Device

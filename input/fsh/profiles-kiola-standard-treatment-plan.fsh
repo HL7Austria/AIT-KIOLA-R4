@@ -28,14 +28,16 @@ Description: "Standard treatment plan for a set of KIOLA activities. Can be appl
 * action[kiolaMeasurement].timing[x][measurementInterval] ^short = "Measurement interval"
 * action[kiolaMeasurement].timing[x][measurementInterval] ^definition = "The measurement interval of this profile. This can be used to measure a patient's compliance to the care plan. A patient is compliant to the service request, if the measurements are taken frequency times per period."
 * action[kiolaMeasurement].timing[x][measurementInterval].repeat 1..1 MS
+* action[kiolaMeasurement].timing[x][measurementInterval].repeat ^short = "How many times should a measurement be taken per period"
+* action[kiolaMeasurement].timing[x][measurementInterval].repeat ^definition = "A patient is only compliant to the service request, if the measurements are taken frequency times per period. A success message may appear, if the requested frequency of measurements is reached in the current period. A warning may be displayed, if the frequency has not been reached in the previous period. If periodMax is set this warning should only be displayed in case the frequency is still not reached after the specified grace period."
+* action[kiolaMeasurement].timing[x][measurementInterval].repeat obeys kiola-measurement-interval
 * action[kiolaMeasurement].timing[x][measurementInterval].repeat.frequency 1..1 MS
 * action[kiolaMeasurement].timing[x][measurementInterval].repeat.frequency ^short = "Measurement should be taken frequency times per period"
 * action[kiolaMeasurement].timing[x][measurementInterval].repeat.period 1..1 MS
+* action[kiolaMeasurement].timing[x][measurementInterval].repeat.period ^short = "Measurement should be taken frequency times per period"
 * action[kiolaMeasurement].timing[x][measurementInterval].repeat.periodMax MS
-* action[kiolaMeasurement].timing[x][measurementInterval].repeat.periodMax ^short = "Grace period, until warnings should appear"
-* action[kiolaMeasurement].timing[x][measurementInterval].repeat.periodMax ^definition = "A patient is only compliant to the service request, if the measurements are taken frequency times per period. However, if the periodMax is reached, an additional warning should be displayed to the user and staff."
+* action[kiolaMeasurement].timing[x][measurementInterval].repeat.periodMax ^short = "Grace period"
 * action[kiolaMeasurement].timing[x][measurementInterval].repeat.periodUnit 1..1 MS
-* action[kiolaMeasurement].timing[x][measurementInterval].repeat.periodUnit = #d
 * action[kiolaMeasurement].participant ^short = "If present, the given measurement devices override the allowed measurement devices from the activity definition"
 * action[kiolaMeasurement].participant ^definition = "Indicates which devices are allowed to document the measurements. This may only be a subset of the devices defined in the activity definition."
 * action[kiolaMeasurement].participant ^slicing.discriminator.type = #value
