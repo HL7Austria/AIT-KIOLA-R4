@@ -15,11 +15,11 @@ RuleSet: KIOLAMeasurementDeviceDefinitionRuleSet(reference)
 * participant[=].extension[=].valueReference.reference = "#deviceDefinition-{reference}"
 * contained[+] = kiola-measurement-device-definition-{reference}
 
-RuleSet: KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(profile, title, reference)
+RuleSet: KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(reference, profile, title)
 * id = "deviceDefinition-{reference}"
 * type.coding[0] = http://fhir.ehealth-systems.at/kiola/device/AIT-11073#{profile} "{title}"
 
-RuleSet: KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(ui_reference, reference)
+RuleSet: KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(reference, ui_reference)
 * id = "deviceDefinition-{reference}"
 * insert KIOLAMeasurementUIReferenceRuleSet({ui_reference})
 
