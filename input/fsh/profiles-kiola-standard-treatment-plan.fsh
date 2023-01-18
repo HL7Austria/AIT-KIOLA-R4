@@ -2,12 +2,13 @@ Profile: KIOLAStandardTreatmentPlan
 Parent: PlanDefinition
 Id: kiola-standard-treatment-plan
 Title: "KIOLA Standard Treatment Plan"
-Description: "Standard treatment plan for a set of KIOLA activities. Can be applied to patients as a stand-alone plan or in combination with other plans. Might be individualized for a single patient, after applying it."
+Description: "A standard treatment plan for a set of KIOLA activities. It can be applied to patients as a stand-alone plan or in combination with other plans and might be individualized for a single patient, after applying it."
 * . ^short = "Standard treatment plan for a set of KIOLA activities"
 * url 1..1 MS
 * url ^short = "The URI of this standard plan, used to identify which standard plans a patient is enrolled to. Currently, versioning is not supported."
 * name 1..1 MS
 * name ^short = "The name of the standard plan. Corresponds to the name of the KIOLA subject tag, used for e.g. filtering."
+* status MS
 * action ^slicing.discriminator.type = #profile
 * action ^slicing.discriminator.path = "definition.resolve()"
 * action ^slicing.rules = #open
@@ -18,6 +19,7 @@ Description: "Standard treatment plan for a set of KIOLA activities. Can be appl
 * action[kiolaMeasurement].definition[x] ^short = "The definition of the activity. This is the only required element for an action."
 * action[kiolaMeasurement].definition[x] 1..1 MS
 * action[kiolaMeasurement].definition[x] only Canonical(KIOLAMeasurementDefinition)
+* action[kiolaMeasurement].extension contains PlanDefinitionPatientInstruciton named patientInstruction 0..1 MS
 * action[kiolaMeasurement].timing[x] ^slicing.discriminator.type = #type
 * action[kiolaMeasurement].timing[x] ^slicing.discriminator.path = "$this"
 * action[kiolaMeasurement].timing[x] ^slicing.rules = #open
@@ -63,13 +65,14 @@ Profile: KIOLAMeasurementDefinition
 Parent: ActivityDefinition
 Id: kiola-measurement-definition
 Title: "KIOLA Measurement Definition"
-Description: "Definition of a vital data measurement for KIOLA."
+Description: "The definition of a vital data measurement for KIOLA."
 * . ^short = "A definition of a request to measure vital data and document the results"
 * kind 1..1
 * kind = #ServiceRequest
 * url ^short = "The URI of this measurement definition, used to identify which standard plans a patient is enrolled to. Currently, versioning is not supported."
 * url 1..1 MS
 * name 1..1 MS
+* status MS
 * code ^short = "The kind of measurement that should be taken"
 * code 1..1 MS
 * code from KIOLAMeasurementTypes
@@ -115,12 +118,22 @@ Id: kiola-measurement-automatic-transmission-device-definition
 Title: "KIOLA Measurement Automatic Transmission Device Definition"
 Description: "Definition of a device supporting automatic transmission of KIOLA vital data measurements, without entering the data manually."
 * type from KIOLAMeasurementAutomaticTransmissionDeviceTypes
-* property contains appPackage 0..1 MS
+* property contains appPackage 0..1 MS and blockedDeviceType 0..1 MS and multiMeasurement 0..1 MS
 * property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
 * property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
 * property[appPackage].valueQuantity ..0
 * property[appPackage].valueCode 1..1 MS
 * property[appPackage].valueCode from KMCAppPackages (example)
+* property[blockedDeviceType] ^short = "Blocked device types that should not be used for recording a measurement"
+* property[blockedDeviceType].type = http://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type
+* property[blockedDeviceType].valueQuantity ..0
+* property[blockedDeviceType].valueCode 1..1 MS
+* property[blockedDeviceType].valueCode from KIOLADevices (example)
+* property[multiMeasurement] ^short = "Record all measurements from the device. Otherwise only the latest measurement might be recorded."
+* property[multiMeasurement].type = http://fhir.ehealth-systems.at/kiola/device/kmc#device_multi_measurement
+* property[multiMeasurement].valueQuantity ..0
+* property[multiMeasurement].valueCode 1..1 MS
+* property[multiMeasurement].valueCode from KIOLABoolean (required)
 
 Profile: KIOLAMeasurementManualEntryDeviceDefinition
 Parent: KIOLAMeasurementDeviceDefinition

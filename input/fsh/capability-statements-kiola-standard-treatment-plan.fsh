@@ -9,7 +9,7 @@ Title: "KIOLA Standard Treatment Plan Management"
 * kind = #capability
 * fhirVersion[0] = #4.0.1
 * format[0] = #application/fhir+json
-* description = "KIOLA standard treatment plans might be managed by another system. Existing plans might be queried. new KIOLA standard treatment plans or updated versions of existing plans might be uploaded to the server. Also the status of existing plans might be changed."
+* description = "KIOLA standard treatment plans might be managed by another system. Existing plans might be queried, new KIOLA standard treatment plans or updated versions of existing plans might be uploaded to the server. Also the status of existing plans might be changed."
 * software.name = "KIOLA"
 * software.version = "Bundle 2.5"
 * software.releaseDate = "2023-02-01"

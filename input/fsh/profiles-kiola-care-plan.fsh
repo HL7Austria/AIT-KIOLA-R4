@@ -2,12 +2,8 @@ Profile: KIOLACarePlan
 Parent: CarePlan
 Id: kiola-care-plan
 Title: "KIOLA Care Plan"
-Description: "Patient-specific care plan, containing one or multiple instances of different KIOLA standard treatment plans,
-that might have been adapted individually for the patient, and/or individually assigned KIOLA activities. 
-
-Only care plans with status active and intent order should be considered for actual patient care, and 
-only one such plan might exist at one point in time. Other care plans with this status and intent might be distinguished by using a different category.
-Furthermore, only care plan activities with status active should be considered."
+Description: "A patient-specific care plan, containing one or multiple instances of different KIOLA standard treatment plans,
+that might have been adapted individually for the patient, and/or individually assigned KIOLA activities."
 * . ^short = "KIOLA care plan for a single patient"
 * subject only Reference(Patient)
 * subject ^short = "Reference to a KIOLA subject, either via reference or identifier"
@@ -17,6 +13,8 @@ Furthermore, only care plan activities with status active should be considered."
 * subject.identifier ^short = "KIOLA Subject UUID"
 * category 1.. MS
 * category.coding = http://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan
+* status MS
+* intent MS
 * instantiatesCanonical ^slicing.discriminator.type = #profile
 * instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
@@ -58,6 +56,8 @@ Description: "Instance of a KIOLA standard treatment plan, that might have been 
 * subject.identifier MS
 * subject.identifier only KIOLASubjectUUIDIdentifier
 * subject.identifier ^short = "KIOLA Subject UUID"
+* status MS
+* intent MS
 * instantiatesCanonical ^slicing.discriminator.type = #profile
 * instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
@@ -100,6 +100,8 @@ Description: "Request to perform a KIOLA vital data measurement."
 * subject.identifier MS
 * subject.identifier only KIOLASubjectUUIDIdentifier
 * subject.identifier ^short = "KIOLA Subject UUID"
+* status MS
+* intent MS
 * instantiatesCanonical ^slicing.discriminator.type = #profile
 * instantiatesCanonical ^slicing.discriminator.path = "resolve()"
 * instantiatesCanonical ^slicing.rules = #open
@@ -187,12 +189,25 @@ Title: "KIOLA Measurement Automatic Transmission Device"
 Description: "Device supporting automatic transmission of KIOLA vital data measurements, without entering the data manually."
 * definition only Reference(KIOLAMeasurementAutomaticTransmissionDeviceDefinition)
 * type from KIOLAMeasurementAutomaticTransmissionDeviceTypes
-* property contains appPackage 0..1 MS
+* property contains appPackage 0..1 MS and blockedDeviceType 0..1 MS and multiMeasurement 0..1 MS and measurementProperties 0..1 MS
 * property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
 * property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
 * property[appPackage].valueQuantity ..0
 * property[appPackage].valueCode 1..1 MS
 * property[appPackage].valueCode from KMCAppPackages (example)
+* property[blockedDeviceType] ^short = "Blocked device types that should not be used for recording a measurement"
+* property[blockedDeviceType].type = http://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type
+* property[blockedDeviceType].valueQuantity ..0
+* property[blockedDeviceType].valueCode 1..1 MS
+* property[blockedDeviceType].valueCode from KIOLADevices (example)
+* property[multiMeasurement] ^short = "Record all measurements from the device. Otherwise only the latest measurement might be recorded."
+* property[multiMeasurement].type = http://fhir.ehealth-systems.at/kiola/device/kmc#device_multi_measurement
+* property[multiMeasurement].valueQuantity ..0
+* property[multiMeasurement].valueCode 1..1 MS
+* property[multiMeasurement].valueCode from KIOLABoolean (required)
+* property[measurementProperties] ^short = "Desired properties of the measurement, which are usually system and/or user dependent"
+* property[measurementProperties].type from KIOLAMeasurementAutomaticTransmissionProperties (extensible)
+* property[measurementProperties].valueCode from KIOLAMeasurementUnits (example)
 
 Profile: KIOLAMeasurementManualEntryDevice
 Parent: KIOLAMeasurementDevice

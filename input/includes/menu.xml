@@ -1,12 +1,13 @@
 <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
-  <li><a href="index.html">IG Home</a></li>
-  <li><a href="overview.html">Overview</a></li>
-  <li><a href="toc.html">Table of Contents</a></li>
-  <li><a href="artifacts.html">Artifacts Summary</a></li>
+  <li><a href="index.html">Home</a></li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Other Resources<b class="caret"> </b></a>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Details<b class="caret"> </b></a>
     <ul class="dropdown-menu">
-      <li><a target="_blank" href="{{site.data.fhir.path}}index.html">FHIR® Spec <img src="external.png" style="text-align: baseline"/></a></li>
+        <li><a href="StructureDefinition-kiola-care-plan.html">KIOLA Care Plan</a></li>
+        <li><a href="StructureDefinition-kiola-standard-treatment-plan.html">KIOLA Standard Treatment Plan</a></li>
+        <li><a href="StructureDefinition-kiola-measurement-definition.html">KIOLA Measurement Definition</a></li>
     </ul>
   </li>
+  <li><a href="artifacts.html">Artifacts Summary</a></li>
+  <li><a href="toc.html">Table of Contents</a></li>
 </ul>

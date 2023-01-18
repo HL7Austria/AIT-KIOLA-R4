@@ -1,6 +1,6 @@
 ### Introduction
 
-This is the implementation guide for **KIOLA (v2.6.0)** based on HL7® FHIR® R4.
+This is the implementation guide for **KIOLA (v2.5.0)** based on HL7® FHIR® R4.
 
 ### FHIR® Shorthand Resources
 

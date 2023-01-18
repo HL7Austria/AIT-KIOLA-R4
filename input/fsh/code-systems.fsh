@@ -3,6 +3,7 @@ Id: kiola-device-cs
 Title: "KIOLA Device Codes"
 Description:  "Generic device types that can transmit vital data."
 * ^url = "http://fhir.ehealth-systems.at/kiola/device"
+* ^content = #fragment
 * #SDC "Structured Data Capture" "A device to manually enter vital data using a questionnaire."
 
 CodeSystem:  KIOLAMDCCS
@@ -126,6 +127,8 @@ Description: "Various codes that might be used to configure a mobile client."
   * #physician_visit:{representation=SinglePageQuestionnaire} "Physician Visit Questionnaire" ""
   * #ergo "Ergo" ""
   * #ebike "Ebike" ""
+* #blocked_device_type "KMC Blocked Device"
+* #device_multi_measurement "KMC Device Multi Measurement"
 
 CodeSystem:  KIOLAMDCDIMCS
 Id: kiola-mdc-dim-cs
@@ -216,7 +219,7 @@ Description:  "Categories of care plans supported by KIOLA."
 
 
 CodeSystem:  KIOLACarePlanTransientTagCS
-Id: kiola-care-plan-transient-tag-ts
+Id: kiola-care-plan-transient-tag-cs
 Title: "KIOLA Care Plan Transient Tag Code System"
 Description:  "Meta data tags of care plans that should be removed when creating an updated plan for a patient, in case an activity changes."
 * ^url = "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
@@ -227,10 +230,18 @@ Description:  "Meta data tags of care plans that should be removed when creating
 
 
 CodeSystem:  KIOLAStandardTreatmentPlanTagCS
-Id: kiola-standard-treatment-plan-tag-ts
+Id: kiola-standard-treatment-plan-tag-cs
 Title: "KIOLA Standard Treatment Plan Code System"
 Description: "Meta data tags of standard treatment plans."
 * ^url = "http://fhir.ehealth-systems.at/artifacts/PlanDefinition/tag"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
 * #default "Default treatment plan" "A default treatment plan, that should be preselected and eventually applied when registering new patients."
+
+
+CodeSystem: KIOLABooleanCS
+Id: kiola-boolean-cs
+Title: "KIOLA Boolean"
+* ^url = "http://fhir.ehealth-systems.at/kiola/boolean"
+* #true "True" ""
+* #false "False" ""
