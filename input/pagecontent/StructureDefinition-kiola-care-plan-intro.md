@@ -32,6 +32,12 @@ When resolving a conflict, the user generally specifies the desired option. This
 
 KIOLA care plans are usually generated from one or multiple standard treatment plans, see [here](StructureDefinition-kiola-standard-treatment-plan.html#generation-of-care-plans) for details. Alternatively, they might also be created individually. A generated care plan might be customized for a patient. Measurement requests might be removed from treatment plans or added as individual measurement requests.
 
+
+##### Medication Taking
+
+Currently, reports on medication takings are implemented as service requests. An independent draft request is created by the KIOLA system when the medication of a patient changes. As soon as an update on the medication compliance is requested for the patient, the draft request is activated and a copy based on the independent service request is added to the care plan. Primarily the service request in the care plan should be considered for the care process, as the independent request might stay active, while the request to report the taking might be removed from the care plan. All medication taking codes start with the prefix `MDC_DEV_VND_AIT_MEDICATION__` 
+
+
 #### Management
 
 If a new care plan with status `active` is created, it is checked for [inconsistencies](#conflicts). If it is consistent, the previously active care plan will eventually be revoked. If it is inconsistent, the operation is aborted and the care plan migth be created as draft. The KIOLA system automatically checks for conflicts and saves the care plan in the respective status, when using the UI. When an active care plan needs to be changed, a new care plan should be created. Only meta data and the status of an active plan may be changed.
@@ -39,7 +45,3 @@ If a new care plan with status `active` is created, it is checked for [inconsist
 A single KIOLA care plan with status `draft` might exist for a patient. Currently, this is usually the case for care plans with conflicts, that need to be resolved before activating the care plan. Care plans in status draft might be changed as often as required. The KIOLA system will automatically activate a care plan in this status, if all conflicts are resolved using the UI.
 
 Check the [Care Plan Management](CapabilityStatement-kiola-care-plan-management.html) capability statement for more details on the behavior of the API.
-
-### Medication Taking
-
-Currently, reports on medication takings are implemented as service requests. An independent draft request is created by the KIOLA system when the medication of a patient changes. As soon as an update on the medication compliance is requested for the patient, the draft request is activated and a copy based on the independent service request is added to the care plan. Primarily the service request in the care plan should be considered for the care process, as the independent request might stay active, while the request to report the taking might be removed from the care plan. All medication taking codes start with the prefix `MDC_DEV_VND_AIT_MEDICATION__` 

@@ -14,7 +14,9 @@ Plans might be defined for single KIOLA instances, or managed in a central repos
 
 One or more standard treatment plans might be used to generate a KIOLA Care Plan. When using the [API](CapabilityStatement-kiola-standard-treatment-plan-apply.html), only the requested plan will be applied. Using the UI, multiple plans might be applied at once. For each standard treatment plan that should be applied for a patient, a separate treatment plan will be added as action to the KIOLA care plan. 
 
-TODO: Add figure similar to plan definition (more concrete naming, also including device definitions)
+<img style="float: none;" src="kiola-care-plan-generation.drawio.svg" alt="Figure: Care Plan Generation" >
+
+The measurement actions can be defined in a couple of ways (1-3), see the examples for details on when to use which method. When applying a treatment plan to a patient, the resulting treatment plan will have a uniform structure.
 
 In case any conflicts occur, the resulting care plan will have the status `draft`, otherwise it will have the status `active` and will immediately be applied for the patient. For more details on conflicts and how to resolve them, see [here](StructureDefinition-kiola-care-plan.html#conflicts).
 

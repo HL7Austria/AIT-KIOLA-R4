@@ -1,0 +1,602 @@
+{
+    "activity": [
+        {
+            "reference": {
+                "reference": "#rg.HerzMobil-Herzinsuffizienz-NEW"
+            }
+        },
+        {
+            "reference": {
+                "reference": "#sr.glucose"
+            }
+        }
+    ],
+    "contained": [
+        {
+            "id": "Device.MDC-DEV-SPEC-PROFILE-BP",
+            "property": [
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_PRESS_BLD_NONINV_SYS",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MMHG:{min=0,max=200}",
+                                    "display": "mmhg",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_PRESS_BLD_NONINV_DIA",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MMHG:{min=0,max=100}",
+                                    "display": "mmhg",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_PRESS_BLD_NONINV_MEAN",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MMHG:{min=1,max=1}",
+                                    "display": "mmhg",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_PULS_RATE_NON_INV",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_BEAT_PER_MIN:{min=20,max=300}",
+                                    "display": "bpm",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_ATTR_TIME_ABS",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_VND_AIT_RFC3339",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "resourceType": "Device",
+            "type": {
+                "coding": [
+                    {
+                        "code": "MDC_DEV_SPEC_PROFILE_BP",
+                        "display": "Blood pressure device",
+                        "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                    }
+                ],
+                "text": "Blood pressure transmitted via a 11073 (like) scale"
+            },
+            "meta": {
+                "profile": [
+                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
+                ]
+            }
+        },
+        {
+            "code": {
+                "coding": [
+                    {
+                        "code": "MDC_DEV_SPEC_PROFILE_BP",
+                        "display": "Blood pressure measurement",
+                        "system": "http://fhir.ehealth-systems.at/kiola/measurement"
+                    }
+                ],
+                "text": "Blood pressure measurement"
+            },
+            "id": "ServiceRequest.MDC-DEV-SPEC-PROFILE-BP",
+            "instantiatesCanonical": [
+                "http://example.org/ActivityDefinition/blood-pressure"
+            ],
+            "intent": "option",
+            "occurrenceTiming": {
+                "repeat": {
+                    "frequency": 1,
+                    "period": 1,
+                    "periodUnit": "d"
+                }
+            },
+            "performer": [
+                {
+                    "reference": "#Device.MDC-DEV-SPEC-PROFILE-BP"
+                },
+                {
+                    "reference": "#Device.SDC"
+                }
+            ],
+            "resourceType": "ServiceRequest",
+            "status": "active",
+            "subject": {
+                "identifier": {
+                    "value": "EEHRRn4NVm4Zjr9fPMuXKb"
+                }
+            },
+            "meta": {
+                "profile": [
+                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
+                ]
+            }
+        },
+        {
+            "action": [
+                {
+                    "resource": {
+                        "reference": "#ServiceRequest.MDC-DEV-SPEC-PROFILE-BP"
+                    },
+                    "title": "Messung Blutdruck *"
+                }
+            ],
+            "id": "rg.HerzMobil-Herzinsuffizienz-NEW",
+            "instantiatesCanonical": [
+                "http://example.org/PlanDefinition/HerzConnectTiming"
+            ],
+            "meta": {
+                "profile": [
+                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-standard-treatment-plan"
+                ]
+            },
+            "intent": "order",
+            "resourceType": "RequestGroup",
+            "status": "active"
+        },
+        {
+            "id": "Device.SDC",
+            "resourceType": "Device",
+            "type": {
+                "coding": [
+                    {
+                        "code": "SDC",
+                        "display": "Structured Data Capture",
+                        "system": "http://fhir.ehealth-systems.at/kiola/device"
+                    }
+                ],
+                "text": "Blood glucose measurement entry via a form"
+            },
+            "meta": {
+                "profile": [
+                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-manual-entry"
+                ]
+            }
+        },
+        {
+            "id": "Device.MDC-DEV-SPEC-PROFILE-GLUCOSE",
+            "property": [
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_ARTERIAL_WHOLEBLOOD",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_ARTERIAL_PLASMA",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_CONTROL",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_ISF",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_UNDETERMINED_WHOLEBLOOD",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_UNDETERMINED_PLASMA",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_GEN",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_CAPILLARY_PLASMA",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_VENOUS_WHOLEBLOOD",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_VENOUS_PLASMA",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_HBA1C",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_PERCENT:{min=0,max=100}",
+                                    "display": "%",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_CONC_GLU_CAPILLARY_WHOLEBLOOD",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
+                                    "display": "mg/dl",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "code": "MDC_ATTR_TIME_ABS",
+                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                            }
+                        ]
+                    },
+                    "valueCode": [
+                        {
+                            "coding": [
+                                {
+                                    "code": "MDC_DIM_VND_AIT_RFC3339",
+                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "resourceType": "Device",
+            "type": {
+                "coding": [
+                    {
+                        "code": "MDC_DEV_SPEC_PROFILE_GLUCOSE",
+                        "display": "Glucose monitor",
+                        "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                    }
+                ],
+                "text": "Blood glucose level transmitted via a 11073 (like) scale"
+            },
+            "meta": {
+                "profile": [
+                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
+                ]
+            }
+        },
+        {
+            "code": {
+                "coding": [
+                    {
+                        "code": "MDC_DEV_SPEC_PROFILE_GLUCOSE",
+                        "display": "Blood glucose measurement",
+                        "system": "http://fhir.ehealth-systems.at/kiola/measurement"
+                    }
+                ],
+                "text": "Blood glucose measurement"
+            },
+            "id": "sr.glucose",
+            "instantiatesCanonical": [
+                "http://example.org/ActivityDefinition/blood-glucose"
+            ],
+            "intent": "order",
+            "occurrenceTiming": {
+                "repeat": {
+                    "frequency": 1,
+                    "period": 1,
+                    "periodUnit": "d"
+                }
+            },
+            "performer": [
+                {
+                    "reference": "#Device.SDC"
+                },
+                {
+                    "reference": "#Device.MDC-DEV-SPEC-PROFILE-GLUCOSE"
+                }
+            ],
+            "resourceType": "ServiceRequest",
+            "status": "active",
+            "subject": {
+                "identifier": {
+                    "value": "EEHRRn4NVm4Zjr9fPMuXKb"
+                }
+            },
+            "meta": {
+                "profile": [
+                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
+                ]
+            }
+        }
+    ],
+    "description": "Simple care plan containing a treatment plan and an individual measurement request.",
+    "id": "kiola-care-plan-example",
+    "instantiatesCanonical": [
+        "http://example.org/PlanDefinition/HerzConnectTiming"
+    ],
+    "intent": "order",
+    "meta": {
+        "tag": [
+            {
+                "code": "SENSOR_CONFIGURATION:{identifier=4511}",
+                "system": "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
+            },
+            {
+                "code": "SENSOR_CONFIGURATION:{identifier=4512}",
+                "system": "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
+            }
+        ],
+        "profile": [
+            "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-care-plan"
+        ]
+    },
+    "resourceType": "CarePlan",
+    "status": "active",
+    "subject": {
+        "identifier": {
+            "value": "EEHRRn4NVm4Zjr9fPMuXKb"
+        }
+    },
+    "title": "Subject plan",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://fhir.ehealth-systems.at/kiola/careplan/category",
+                    "code": "kiola-care-plan"
+                }
+            ]
+        }
+    ]
+}
