@@ -19,7 +19,7 @@ Description: "A standard treatment plan for a set of KIOLA activities. It can be
 * action[kiolaMeasurement].definition[x] ^short = "The definition of the activity. This is the only required element for an action."
 * action[kiolaMeasurement].definition[x] 1..1 MS
 * action[kiolaMeasurement].definition[x] only Canonical(KIOLAMeasurementDefinition)
-* action[kiolaMeasurement].extension contains PlanDefinitionPatientInstruciton named patientInstruction 0..1 MS
+* action[kiolaMeasurement].extension contains PlanDefinitionPatientInstruction named patientInstruction 0..1 MS
 * action[kiolaMeasurement].timing[x] ^slicing.discriminator.type = #type
 * action[kiolaMeasurement].timing[x] ^slicing.discriminator.path = "$this"
 * action[kiolaMeasurement].timing[x] ^slicing.rules = #open

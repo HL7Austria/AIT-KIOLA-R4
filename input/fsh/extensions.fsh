@@ -6,10 +6,18 @@ Description: "Extension to add a device definition to a participant of an activi
 * value[x] only Reference(DeviceDefinition)
 * value[x] 1..1
 
-Extension: PlanDefinitionPatientInstruciton
+Extension: PlanDefinitionPatientInstruction
 Id: plan-definition-patient-instruction
 Title:  "Plan Definition Patient Instruction"
 Description: "Extension to add a patient instruction to the activity of a plan definition."
 * ^url = "http://fhir.ehealth-systems.at/extensions/PlanDefinition/patientInstruction"
 * value[x] only string
+* value[x] 1..1
+
+Extension: DeviceDefinitionSpecializationCodeableConcept
+Id: device-definition-specialization-codeable-concept
+Title:  "Device Definition Specialization Codeable Concept"
+Description: "Extension ..."
+* ^url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationCodeableConcept"
+* value[x] only CodeableConcept
 * value[x] 1..1

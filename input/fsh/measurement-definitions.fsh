@@ -294,3 +294,10 @@ Usage: #example
 Title: "Wound Measurement Definition"
 * insert KIOLAMeasurementDefinitionRuleSet(MDC_DEV_SPEC_PROFILE_VND_AIT_WOUND, Wound measurement)
 * insert KIOLAMeasurementDeviceDefinitionRuleSet(sdc)
+
+Instance: kiola-measurement-definition-alivecor-ecg
+InstanceOf: KIOLAMeasurementDefinition
+Usage: #example
+Title: "AliveCor ECG Measurement Definition"
+* insert KIOLAMeasurementDefinitionRuleSet(MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
+* insert KIOLAMeasurementDeviceDefinitionRuleSet(alivecor-ecg)

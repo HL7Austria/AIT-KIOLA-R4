@@ -125,3 +125,14 @@ Instance: kiola-measurement-device-definition-stepsequence
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(stepsequence, MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE, Stepsequence measurement)
+
+Instance: kiola-measurement-device-definition-alivecor-ecg
+InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
+Usage: #inline
+* extension[+].url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationCodeableConcept"
+* extension[=].valueCodeableConcept.coding[+] = http://terminology.hl7.org/CodeSystem/v2-0074#EC "Electrocardiac"
+* extension[=].valueCodeableConcept.coding[+] = http://fhir.ehealth-systems.at/kiola/diagnostic-report/#ALIVECOR_ECG "AliveCor ECG Report"
+* manufacturerString = "AliveCor"
+* deviceName[+].name = "KardiaMobile 6L"
+* deviceName[=].type = #manufacturer-name
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(alivecor-ecg, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)

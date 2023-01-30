@@ -37,6 +37,7 @@ Description: "Measurement device types for automatic transmission of measurement
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE "Stepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_SLEEPSEQUENCE "Sleepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG "Getemed ECG" ""
+  * #MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT "Diagnostic report" ""
 * #MDC_PROPERTY "KIOLA device property" "A property of a KIOLA measurement device. Used to describe fields of a specific measurement."
   * ^property.code = #abstract
   * ^property.valueBoolean = true
@@ -199,6 +200,7 @@ Description: "Types of vital data measurements that can be transmitted to a KIOL
 * #MDC_VND_AIT_Q_PHYS_VISIT_V1 "Physician Visit Questionnaire" ""
 * #MDC_VND_AIT_Q_MED_V1 "Medication taken Questionnaire" ""
 * #MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG "Getemed ECG measurement" ""
+* #MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT "Diagnostic report" ""
 
 
 CodeSystem:  KIOLACarePlanCategoryCS
