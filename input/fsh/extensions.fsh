@@ -14,10 +14,10 @@ Description: "Extension to add a patient instruction to the activity of a plan d
 * value[x] only string
 * value[x] 1..1
 
-Extension: DeviceDefinitionSpecializationCodeableConcept
-Id: device-definition-specialization-codeable-concept
-Title:  "Device Definition Specialization Codeable Concept"
+Extension: DeviceDefinitionSpecializationSystemTypeCodeableConcept
+Id: device-definition-specialization-system-type-codeable-concept
+Title:  "Device Definition Specialization System Type Codeable Concept"
 Description: "Extension ..."
-* ^url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationCodeableConcept"
+* ^url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationSystemTypeCodeableConcept"
 * value[x] only CodeableConcept
 * value[x] 1..1

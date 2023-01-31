@@ -128,11 +128,12 @@ Usage: #inline
 
 Instance: kiola-measurement-device-definition-alivecor-ecg
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
-Usage: #inline
-* extension[+].url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationCodeableConcept"
-* extension[=].valueCodeableConcept.coding[+] = http://terminology.hl7.org/CodeSystem/v2-0074#EC "Electrocardiac"
-* extension[=].valueCodeableConcept.coding[+] = http://fhir.ehealth-systems.at/kiola/diagnostic-report/#ALIVECOR_ECG "AliveCor ECG Report"
+Usage: #example
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(alivecor-ecg, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
 * manufacturerString = "AliveCor"
 * deviceName[+].name = "KardiaMobile 6L"
 * deviceName[=].type = #manufacturer-name
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(alivecor-ecg, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
+* specialization[+].systemType = "EC"
+* specialization[=].extension[+].url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationSystemTypeCodeableConcept"
+* specialization[=].extension[=].valueCodeableConcept.coding[+] = http://terminology.hl7.org/CodeSystem/v2-0074#EC "Electrocardiac"
+* specialization[=].extension[=].valueCodeableConcept.coding[+] = http://fhir.ehealth-systems.at/kiola/diagnostic-report/#ALIVECOR_ECG "AliveCor ECG Report"
