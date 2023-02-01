@@ -126,9 +126,15 @@ InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(stepsequence, MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE, Stepsequence measurement)
 
+Instance: kiola-measurement-device-definition-diagnostic-report
+InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
+Usage: #inline
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(diagnostic-report, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
+
 Instance: kiola-measurement-device-definition-alivecor-ecg
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #example
+Title: "AliveCor Device Definition Example"
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(alivecor-ecg, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
 * manufacturerString = "AliveCor"
 * deviceName[+].name = "KardiaMobile 6L"
