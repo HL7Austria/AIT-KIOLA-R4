@@ -10,7 +10,7 @@ Usage: #inline
 Instance: dev-sdc-generic-questionnaire-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-generic-questionnaire-v1, q_symptoms:{representation=MultiPageTopicQuestionnaire})
+* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-generic-questionnaire-v1, q_questionnaire:{representation=MultiPageTopicQuestionnaire})
 
 Instance: dev-sdc-glucose-suppl-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
