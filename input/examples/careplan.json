@@ -133,7 +133,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
                 ]
             }
         },
@@ -177,7 +177,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
                 ]
             }
         },
@@ -196,7 +196,7 @@
             ],
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-standard-treatment-plan"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-standard-treatment-plan"
                 ]
             },
             "intent": "order",
@@ -218,7 +218,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-manual-entry"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-manual-entry"
                 ]
             }
         },
@@ -511,7 +511,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
                 ]
             }
         },
@@ -555,7 +555,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
                 ]
             }
         }
@@ -578,7 +578,7 @@
             }
         ],
         "profile": [
-            "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-care-plan"
+            "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-care-plan"
         ]
     },
     "resourceType": "CarePlan",

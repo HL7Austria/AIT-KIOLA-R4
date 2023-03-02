@@ -43,7 +43,7 @@ Title: "KIOLA Standard Treatment Plan Set Default"
 * purpose = "This capability might be used by other systems (e.g. editors for standard treatment plans) to set some KIOLA standard treatment plans as default plans. Those default plans will then be preselected and eventually applied when registering a new patient."
 // * title = "foo" not rendered
 * rest[0].mode = #server
-* rest[=].documentation = "The `$meta-add` and `$meta-remove` operations might be used with the tag `http://fhir.ehealth-systems.at/artifacts/PlanDefinition/tag#default` to add or remove a standard treatment plan from the set of default plans. The read and search operations might be used to query all standard treatment plans and lookup default plans in the result. The `$meta` operation might be used to check if a specific plan currently is a default plan. When creating a new treatment plan, the meta tag might also be included to declare it as a default plan."
+* rest[=].documentation = "The `$meta-add` and `$meta-remove` operations might be used with the tag `https://fhir.ehealth-systems.at/artifacts/PlanDefinition/tag#default` to add or remove a standard treatment plan from the set of default plans. The read and search operations might be used to query all standard treatment plans and lookup default plans in the result. The `$meta` operation might be used to check if a specific plan currently is a default plan. When creating a new treatment plan, the meta tag might also be included to declare it as a default plan."
 * rest[=].resource[0].type = #PlanDefinition
 * rest[=].resource[=].profile = Canonical(KIOLAStandardTreatmentPlan)
 * rest[=].resource[=].interaction[0].code = #read

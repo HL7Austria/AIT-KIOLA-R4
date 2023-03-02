@@ -2,7 +2,7 @@ CodeSystem:  KIOLADeviceCS
 Id: kiola-device-cs
 Title: "KIOLA Device Codes"
 Description:  "Generic device types that can transmit vital data."
-* ^url = "http://fhir.ehealth-systems.at/kiola/device"
+* ^url = "https://fhir.ehealth-systems.at/kiola/device"
 * ^content = #fragment
 * #SDC "Structured Data Capture" "A device to manually enter vital data using a questionnaire."
 
@@ -10,7 +10,7 @@ CodeSystem:  KIOLAMDCCS
 Id: kiola-mdc-cs
 Title: "KIOLA Device Codes AIT 11073"
 Description: "Measurement device types for automatic transmission of measurements and their configuration parameters, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code."
-* ^url = "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+* ^url = "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
 * ^hierarchyMeaning = #is-a
 * ^property[0].code = #abstract
 * ^property[=].type = #boolean
@@ -37,7 +37,7 @@ Description: "Measurement device types for automatic transmission of measurement
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE "Stepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_SLEEPSEQUENCE "Sleepsequence measurement device" ""
   * #MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG "Getemed ECG" ""
-  * #MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT "Diagnostic report" ""
+  * #MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT "FHIR Diagnostic report" ""
 * #MDC_PROPERTY "KIOLA device property" "A property of a KIOLA measurement device. Used to describe fields of a specific measurement."
   * ^property.code = #abstract
   * ^property.valueBoolean = true
@@ -115,7 +115,7 @@ CodeSystem: KIOLADeviceKMCCS
 Id: kiola-device-kmc-cs
 Title: "KMC Device Codes"
 Description: "Various codes that might be used to configure a mobile client."
-* ^url = "http://fhir.ehealth-systems.at/kiola/device/kmc"
+* ^url = "https://fhir.ehealth-systems.at/kiola/device/kmc"
 * ^hierarchyMeaning = #is-a
 * #app_package "App package that handles the data transmission from the device" ""
   * #at.ac.ait.his.smwt "6-Minute-Walk-Test App" ""
@@ -137,7 +137,7 @@ Title: "KIOLA Dimension Codes AIT 11073"
 Description: "Measurement dimensions supported by KIOLA, based on the ISO/IEEE 11073 standard with vendor-specific extensions, mainly AIT. The MDC display name is used as a code.
 
 All codes might be parametrized using the syntax `CODE:{min=MIN_VAL,max=MAX_VAL}` to define a plausibility range for manual data entry, e.g.: `MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}`"
-* ^url = "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+* ^url = "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
 * #MDC_DIM_CENTI_M "" ""
@@ -158,7 +158,7 @@ CodeSystem: KIOLAMeasurementCS
 Id: kiola-measurement-cs
 Title: "KIOLA Measurement Codes"
 Description: "Types of vital data measurements that can be transmitted to a KIOLA system. The naming is derived from MDC display names of devices from the ISO/IEEE 11073 standard."
-* ^url = "http://fhir.ehealth-systems.at/kiola/measurement"
+* ^url = "https://fhir.ehealth-systems.at/kiola/measurement"
 * #MDC_DEV_SPEC_PROFILE_GLUCOSE "Blood glucose measurement" ""
 * #MDC_DEV_SPEC_PROFILE_BP "Blood pressure measurement" ""
 * #MDC_DEV_SPEC_PROFILE_INR "Measurement of INR" ""
@@ -200,14 +200,14 @@ Description: "Types of vital data measurements that can be transmitted to a KIOL
 * #MDC_VND_AIT_Q_PHYS_VISIT_V1 "Physician Visit Questionnaire" ""
 * #MDC_VND_AIT_Q_MED_V1 "Medication taken Questionnaire" ""
 * #MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG "Getemed ECG measurement" ""
-* #MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT "Diagnostic report" ""
+* #MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT "FHIR Diagnostic report" ""
 
 
 CodeSystem:  KIOLACarePlanCategoryCS
 Id: kiola-care-plan-category-cs
 Title: "KIOLA Care Plan Category Code System"
 Description:  "Categories of care plans supported by KIOLA."
-* ^url = "http://fhir.ehealth-systems.at/kiola/careplan/category"
+* ^url = "https://fhir.ehealth-systems.at/kiola/careplan/category"
 * #kiola-care-plan "KIOLA Care Plan" "Main care plan, that is used to describe the overall plan of a patient. All other care plans to be considered for a patients care, must be part of this care plan."
 
 
@@ -216,7 +216,7 @@ Description:  "Categories of care plans supported by KIOLA."
 //Id: kiola-service-request-cs
 //Title: "KIOLA Service Request Category Code System"
 //Description:  ""
-//* ^url = "http://fhir.ehealth-systems.at/kiola/servicerequest/category"
+//* ^url = "https://fhir.ehealth-systems.at/kiola/servicerequest/category"
 //* #kiola-vital-data-measurement "Vital Data Measurement" ""
 
 
@@ -224,7 +224,7 @@ CodeSystem:  KIOLACarePlanTransientTagCS
 Id: kiola-care-plan-transient-tag-cs
 Title: "KIOLA Care Plan Transient Tag Code System"
 Description:  "Meta data tags of care plans that should be removed when creating an updated plan for a patient, in case an activity changes."
-* ^url = "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
+* ^url = "https://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
 * #SENSOR_CONFIGURATION "Sensor configuration" "KIOLA ID of the associated (legacy) sensor configuration."
@@ -235,7 +235,7 @@ CodeSystem:  KIOLAStandardTreatmentPlanTagCS
 Id: kiola-standard-treatment-plan-tag-cs
 Title: "KIOLA Standard Treatment Plan Code System"
 Description: "Meta data tags of standard treatment plans."
-* ^url = "http://fhir.ehealth-systems.at/artifacts/PlanDefinition/tag"
+* ^url = "https://fhir.ehealth-systems.at/artifacts/PlanDefinition/tag"
 * ^content = #fragment  // required for validation with compositional
 * ^compositional = true
 * #default "Default treatment plan" "A default treatment plan, that should be preselected and eventually applied when registering new patients."
@@ -244,6 +244,6 @@ Description: "Meta data tags of standard treatment plans."
 CodeSystem: KIOLABooleanCS
 Id: kiola-boolean-cs
 Title: "KIOLA Boolean"
-* ^url = "http://fhir.ehealth-systems.at/kiola/boolean"
+* ^url = "https://fhir.ehealth-systems.at/kiola/boolean"
 * #true "True" ""
 * #false "False" ""

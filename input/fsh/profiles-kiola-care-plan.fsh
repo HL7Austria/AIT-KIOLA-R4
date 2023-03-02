@@ -12,7 +12,7 @@ that might have been adapted individually for the patient, and/or individually a
 * subject.identifier only KIOLASubjectUUIDIdentifier
 * subject.identifier ^short = "KIOLA Subject UUID"
 * category 1.. MS
-* category.coding = http://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan
+* category.coding = https://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan
 * status MS
 * intent MS
 * instantiatesCanonical ^slicing.discriminator.type = #profile
@@ -114,7 +114,7 @@ Description: "Request to perform a KIOLA vital data measurement."
 * code from KIOLAMeasurementTypes
 // FUTURE: (extensible) -> fallback in client
 //   * category 1.. MS <- needed when code becomes extensible
-//   * category = http://fhir.ehealth-systems.at/kiola/servicerequest/category#kiola-vital-data-measurement
+//   * category = https://fhir.ehealth-systems.at/kiola/servicerequest/category#kiola-vital-data-measurement
 * code ^short = "The kind of measurement that should be taken"
 * occurrence[x] ^slicing.discriminator.type = #type
 * occurrence[x] ^slicing.discriminator.path = "$this"
@@ -177,7 +177,7 @@ Description: "An abstract device for recording a KIOLA vital data measurement."
 * property ^slicing.ordered = false
 * property contains uiReference 0..1 MS
 * property[uiReference] ^short = "UI reference which is used to display the device on a client"
-* property[uiReference].type = http://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
+* property[uiReference].type = https://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
 * property[uiReference].valueQuantity ..0
 * property[uiReference].valueCode 1..1 MS
 * property[uiReference].valueCode from KMCUIReferences (example)
@@ -191,17 +191,17 @@ Description: "Device supporting automatic transmission of KIOLA vital data measu
 * type from KIOLAMeasurementAutomaticTransmissionDeviceTypes
 * property contains appPackage 0..1 MS and blockedDeviceType 0..1 MS and multiMeasurement 0..1 MS and measurementProperties 0..1 MS
 * property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
-* property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
+* property[appPackage].type = https://fhir.ehealth-systems.at/kiola/device/kmc#app_package
 * property[appPackage].valueQuantity ..0
 * property[appPackage].valueCode 1..1 MS
 * property[appPackage].valueCode from KMCAppPackages (example)
 * property[blockedDeviceType] ^short = "Blocked device types that should not be used for recording a measurement"
-* property[blockedDeviceType].type = http://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type
+* property[blockedDeviceType].type = https://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type
 * property[blockedDeviceType].valueQuantity ..0
 * property[blockedDeviceType].valueCode 1..1 MS
 * property[blockedDeviceType].valueCode from KIOLADevices (example)
 * property[multiMeasurement] ^short = "Record all measurements from the device. Otherwise only the latest measurement might be recorded."
-* property[multiMeasurement].type = http://fhir.ehealth-systems.at/kiola/device/kmc#device_multi_measurement
+* property[multiMeasurement].type = https://fhir.ehealth-systems.at/kiola/device/kmc#device_multi_measurement
 * property[multiMeasurement].valueQuantity ..0
 * property[multiMeasurement].valueCode 1..1 MS
 * property[multiMeasurement].valueCode from KIOLABoolean (required)
@@ -215,4 +215,4 @@ Id: kiola-measurement-manual-entry-device
 Title: "KIOLA Measurement Manual Entry Device"
 Description: "Device supporting manual data entry of KIOLA vital data measurements."
 * definition only Reference(KIOLAMeasurementManualEntryDeviceDefinition)
-* type = http://fhir.ehealth-systems.at/kiola/device#SDC
+* type = https://fhir.ehealth-systems.at/kiola/device#SDC
