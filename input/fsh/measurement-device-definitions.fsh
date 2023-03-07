@@ -96,7 +96,7 @@ Usage: #inline
 Instance: dev-ait-hf-cardio-ergo-config
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-hf-cardio-ebike-config, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_CONFIG, Cardio Ergo configuration)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-hf-cardio-ergo-config, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_CONFIG, Cardio Ergo configuration)
 * insert KIOLAMeasurementUIReferenceRuleSet(ergo)
 * insert KIOLAMeasurementAppPackageRuleSet(at.ac.ait.emotioncardio)
 
@@ -129,7 +129,7 @@ Usage: #inline
 Instance: dev-ait-fhir-diagnostic-report
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-diagnostic-report, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-fhir-diagnostic-report, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
 
 Instance: dev-ait-alivecor-ecg
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
