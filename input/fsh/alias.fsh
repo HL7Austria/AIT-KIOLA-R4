@@ -1,4 +1,4 @@
 Alias: AdministrativeGender = http://hl7.org/fhir/administrative-gender
 
-Alias: $ObsProf = http://fhir.ehealth-systems.at/kiola/measurement
-Alias: $PartDevDef = http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition
+Alias: $ObsProf = https://fhir.ehealth-systems.at/kiola/measurement
+Alias: $PartDevDef = https://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition

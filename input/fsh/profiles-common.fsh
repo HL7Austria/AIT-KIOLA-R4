@@ -5,7 +5,7 @@ Title: "KIOLA Subject UUID"
 Description: "Primary identifier for a subject in KIOLA"
 * use = #official
 * system 1..
-* system = "http://fhir.ehealth-systems.at/kiola/patient/identifier/uuid" (exactly)
+* system = "https://fhir.ehealth-systems.at/kiola/identifier/subject" (exactly)
 * value 1..
 * value ^short = "KIOLA UUID of the subject"
 

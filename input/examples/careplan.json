@@ -20,7 +20,7 @@
                         "coding": [
                             {
                                 "code": "MDC_PRESS_BLD_NONINV_SYS",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -30,7 +30,7 @@
                                 {
                                     "code": "MDC_DIM_MMHG:{min=0,max=200}",
                                     "display": "mmhg",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -41,7 +41,7 @@
                         "coding": [
                             {
                                 "code": "MDC_PRESS_BLD_NONINV_DIA",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -51,7 +51,7 @@
                                 {
                                     "code": "MDC_DIM_MMHG:{min=0,max=100}",
                                     "display": "mmhg",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -62,7 +62,7 @@
                         "coding": [
                             {
                                 "code": "MDC_PRESS_BLD_NONINV_MEAN",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -72,7 +72,7 @@
                                 {
                                     "code": "MDC_DIM_MMHG:{min=1,max=1}",
                                     "display": "mmhg",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -83,7 +83,7 @@
                         "coding": [
                             {
                                 "code": "MDC_PULS_RATE_NON_INV",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -93,7 +93,7 @@
                                 {
                                     "code": "MDC_DIM_BEAT_PER_MIN:{min=20,max=300}",
                                     "display": "bpm",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -104,7 +104,7 @@
                         "coding": [
                             {
                                 "code": "MDC_ATTR_TIME_ABS",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -113,7 +113,7 @@
                             "coding": [
                                 {
                                     "code": "MDC_DIM_VND_AIT_RFC3339",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -126,14 +126,14 @@
                     {
                         "code": "MDC_DEV_SPEC_PROFILE_BP",
                         "display": "Blood pressure device",
-                        "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                        "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                     }
                 ],
                 "text": "Blood pressure transmitted via a 11073 (like) scale"
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
                 ]
             }
         },
@@ -143,7 +143,7 @@
                     {
                         "code": "MDC_DEV_SPEC_PROFILE_BP",
                         "display": "Blood pressure measurement",
-                        "system": "http://fhir.ehealth-systems.at/kiola/measurement"
+                        "system": "https://fhir.ehealth-systems.at/kiola/measurement"
                     }
                 ],
                 "text": "Blood pressure measurement"
@@ -177,7 +177,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
                 ]
             }
         },
@@ -196,7 +196,7 @@
             ],
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-standard-treatment-plan"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-standard-treatment-plan"
                 ]
             },
             "intent": "order",
@@ -211,14 +211,14 @@
                     {
                         "code": "SDC",
                         "display": "Structured Data Capture",
-                        "system": "http://fhir.ehealth-systems.at/kiola/device"
+                        "system": "https://fhir.ehealth-systems.at/kiola/device"
                     }
                 ],
                 "text": "Blood glucose measurement entry via a form"
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-manual-entry"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-manual-entry"
                 ]
             }
         },
@@ -230,7 +230,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_ARTERIAL_WHOLEBLOOD",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -240,7 +240,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -251,7 +251,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_ARTERIAL_PLASMA",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -261,7 +261,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -272,7 +272,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_CONTROL",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -282,7 +282,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -293,7 +293,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_ISF",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -303,7 +303,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -314,7 +314,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_UNDETERMINED_WHOLEBLOOD",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -324,7 +324,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -335,7 +335,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_UNDETERMINED_PLASMA",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -345,7 +345,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -356,7 +356,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_GEN",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -366,7 +366,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -377,7 +377,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_CAPILLARY_PLASMA",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -387,7 +387,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -398,7 +398,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_VENOUS_WHOLEBLOOD",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -408,7 +408,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -419,7 +419,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_VENOUS_PLASMA",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -429,7 +429,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -440,7 +440,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_HBA1C",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -450,7 +450,7 @@
                                 {
                                     "code": "MDC_DIM_PERCENT:{min=0,max=100}",
                                     "display": "%",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -461,7 +461,7 @@
                         "coding": [
                             {
                                 "code": "MDC_CONC_GLU_CAPILLARY_WHOLEBLOOD",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -471,7 +471,7 @@
                                 {
                                     "code": "MDC_DIM_MILLI_G_PER_DL:{min=0,max=1000}",
                                     "display": "mg/dl",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -482,7 +482,7 @@
                         "coding": [
                             {
                                 "code": "MDC_ATTR_TIME_ABS",
-                                "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                                "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                             }
                         ]
                     },
@@ -491,7 +491,7 @@
                             "coding": [
                                 {
                                     "code": "MDC_DIM_VND_AIT_RFC3339",
-                                    "system": "http://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
+                                    "system": "https://fhir.ehealth-systems.at/kiola/dimension/AIT-11073"
                                 }
                             ]
                         }
@@ -504,14 +504,14 @@
                     {
                         "code": "MDC_DEV_SPEC_PROFILE_GLUCOSE",
                         "display": "Glucose monitor",
-                        "system": "http://fhir.ehealth-systems.at/kiola/device/AIT-11073"
+                        "system": "https://fhir.ehealth-systems.at/kiola/device/AIT-11073"
                     }
                 ],
                 "text": "Blood glucose level transmitted via a 11073 (like) scale"
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-device-measurement-automatic-transmission"
                 ]
             }
         },
@@ -521,7 +521,7 @@
                     {
                         "code": "MDC_DEV_SPEC_PROFILE_GLUCOSE",
                         "display": "Blood glucose measurement",
-                        "system": "http://fhir.ehealth-systems.at/kiola/measurement"
+                        "system": "https://fhir.ehealth-systems.at/kiola/measurement"
                     }
                 ],
                 "text": "Blood glucose measurement"
@@ -555,7 +555,7 @@
             },
             "meta": {
                 "profile": [
-                    "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
+                    "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-service-request-measurement"
                 ]
             }
         }
@@ -570,15 +570,15 @@
         "tag": [
             {
                 "code": "SENSOR_CONFIGURATION:{identifier=4511}",
-                "system": "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
+                "system": "https://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
             },
             {
                 "code": "SENSOR_CONFIGURATION:{identifier=4512}",
-                "system": "http://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
+                "system": "https://fhir.ehealth-systems.at/kiola/careplan/transient-tag"
             }
         ],
         "profile": [
-            "http://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-care-plan"
+            "https://fhir.ehealth-systems.at/artifacts/StructureDefinition/kiola-care-plan"
         ]
     },
     "resourceType": "CarePlan",
@@ -593,7 +593,7 @@
         {
             "coding": [
                 {
-                    "system": "http://fhir.ehealth-systems.at/kiola/careplan/category",
+                    "system": "https://fhir.ehealth-systems.at/kiola/careplan/category",
                     "code": "kiola-care-plan"
                 }
             ]

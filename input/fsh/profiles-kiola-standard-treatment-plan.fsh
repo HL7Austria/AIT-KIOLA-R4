@@ -43,7 +43,7 @@ Description: "A standard treatment plan for a set of KIOLA activities. It can be
 * action[kiolaMeasurement].participant ^short = "If present, the given measurement devices override the allowed measurement devices from the activity definition"
 * action[kiolaMeasurement].participant ^definition = "Indicates which devices are allowed to document the measurements. This may only be a subset of the devices defined in the activity definition."
 * action[kiolaMeasurement].participant ^slicing.discriminator.type = #value
-* action[kiolaMeasurement].participant ^slicing.discriminator.path = "extension('http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
+* action[kiolaMeasurement].participant ^slicing.discriminator.path = "extension('https://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
 * action[kiolaMeasurement].participant ^slicing.rules = #open
 * action[kiolaMeasurement].participant ^slicing.description = "foo"
 * action[kiolaMeasurement].participant ^slicing.ordered = false
@@ -77,7 +77,7 @@ Description: "The definition of a vital data measurement for KIOLA."
 * code 1..1 MS
 * code from KIOLAMeasurementTypes
 * participant ^slicing.discriminator.type = #value
-* participant ^slicing.discriminator.path = "extension('http://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
+* participant ^slicing.discriminator.path = "extension('https://fhir.ehealth-systems.at/extensions/ParticipantDeviceDefinition').value.resolve().type"
 * participant ^slicing.rules = #open
 * participant ^slicing.description = "foo"
 * participant ^slicing.ordered = false
@@ -107,7 +107,7 @@ Description: "Definition of an abstract device for recording a KIOLA vital data 
 * property ^slicing.ordered = false
 * property contains uiReference 0..1 MS
 * property[uiReference] ^short = "UI reference which is used to display the device on a client"
-* property[uiReference].type = http://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
+* property[uiReference].type = https://fhir.ehealth-systems.at/kiola/device/kmc#ui_reference
 * property[uiReference].valueQuantity ..0
 * property[uiReference].valueCode 1..1 MS
 * property[uiReference].valueCode from KMCUIReferences (example)
@@ -120,17 +120,17 @@ Description: "Definition of a device supporting automatic transmission of KIOLA 
 * type from KIOLAMeasurementAutomaticTransmissionDeviceTypes
 * property contains appPackage 0..1 MS and blockedDeviceType 0..1 MS and multiMeasurement 0..1 MS
 * property[appPackage] ^short = "Identifier of the app required to transmit the measurements"
-* property[appPackage].type = http://fhir.ehealth-systems.at/kiola/device/kmc#app_package
+* property[appPackage].type = https://fhir.ehealth-systems.at/kiola/device/kmc#app_package
 * property[appPackage].valueQuantity ..0
 * property[appPackage].valueCode 1..1 MS
 * property[appPackage].valueCode from KMCAppPackages (example)
 * property[blockedDeviceType] ^short = "Blocked device types that should not be used for recording a measurement"
-* property[blockedDeviceType].type = http://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type
+* property[blockedDeviceType].type = https://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type
 * property[blockedDeviceType].valueQuantity ..0
 * property[blockedDeviceType].valueCode 1..1 MS
 * property[blockedDeviceType].valueCode from KIOLADevices (example)
 * property[multiMeasurement] ^short = "Record all measurements from the device. Otherwise only the latest measurement might be recorded."
-* property[multiMeasurement].type = http://fhir.ehealth-systems.at/kiola/device/kmc#device_multi_measurement
+* property[multiMeasurement].type = https://fhir.ehealth-systems.at/kiola/device/kmc#device_multi_measurement
 * property[multiMeasurement].valueQuantity ..0
 * property[multiMeasurement].valueCode 1..1 MS
 * property[multiMeasurement].valueCode from KIOLABoolean (required)
@@ -140,4 +140,4 @@ Parent: KIOLAMeasurementDeviceDefinition
 Id: kiola-measurement-manual-entry-device-definition
 Title: "KIOLA Measurement Manual Entry Device Definition"
 Description: "Definition of a device supporting manual data entry of KIOLA vital data measurements."
-* type = http://fhir.ehealth-systems.at/kiola/device#SDC
+* type = https://fhir.ehealth-systems.at/kiola/device#SDC

@@ -2,144 +2,144 @@
 //          Manual Entry Devices
 // -------------------------------------
 
-Instance: kiola-measurement-device-definition-sdc
+Instance: dev-sdc
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* id = "deviceDefinition-sdc"
+* id = "dev-sdc"
 
-Instance: kiola-measurement-device-definition-sdc-generic-questionnaire
+Instance: dev-sdc-generic-questionnaire-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-generic-questionnaire, q_symptoms:{representation=MultiPageTopicQuestionnaire})
+* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-generic-questionnaire-v1, q_questionnaire:{representation=MultiPageTopicQuestionnaire})
 
-Instance: kiola-measurement-device-definition-sdc-glucose-suppl
+Instance: dev-sdc-glucose-suppl-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-glucose-suppl, glucose_suppl:{representation=SinglePageQuestionnaire})
+* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-glucose-suppl-v1, glucose_suppl:{representation=SinglePageQuestionnaire})
 
-Instance: kiola-measurement-device-definition-sdc-med-daily-dose
+Instance: dev-sdc-med-daily-dose-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-med-daily-dose, q_medication_intake:{representation=MultiPageTopicQuestionnaire})
+* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-med-daily-dose-v1, q_medication_intake:{representation=MultiPageTopicQuestionnaire})
 
-Instance: kiola-measurement-device-definition-sdc-covid19
+Instance: dev-sdc-covid19-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-covid19, q_symptoms:{representation=MultiPageTopicQuestionnaire})
+* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-covid19-v1, q_symptoms:{representation=MultiPageTopicQuestionnaire})
 
-Instance: kiola-measurement-device-definition-sdc-phys-visit
+Instance: dev-sdc-phys-visit-v1
 InstanceOf: KIOLAMeasurementManualEntryDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-phys-visit, physician_visit:{representation=SinglePageQuestionnaire})
+* insert KIOLAMeasurementManualEntryDeviceDefinitionRuleSet(sdc-phys-visit-v1, physician_visit:{representation=SinglePageQuestionnaire})
 
 // -------------------------------------
 //    Automatic Transmission Devices
 // -------------------------------------
 
-Instance: kiola-measurement-device-definition-blood-pressure
+Instance: dev-bp
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(blood-pressure, MDC_DEV_SPEC_PROFILE_BP, Blood pressure device)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(bp, MDC_DEV_SPEC_PROFILE_BP, Blood pressure device)
 
-Instance: kiola-measurement-device-definition-glucose
+Instance: dev-glucose
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(glucose, MDC_DEV_SPEC_PROFILE_GLUCOSE, Glucose device)
 
-Instance: kiola-measurement-device-definition-inr
+Instance: dev-inr
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(inr, MDC_DEV_SPEC_PROFILE_INR, INR device)
 
-Instance: kiola-measurement-device-definition-puls-oxim
+Instance: dev-puls-oxim
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(puls-oxim, MDC_DEV_SPEC_PROFILE_PULS_OXIM, Blood oximeter device)
 
-Instance: kiola-measurement-device-definition-scale
+Instance: dev-scale
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(scale, MDC_DEV_SPEC_PROFILE_SCALE, Scale)
 
-Instance: kiola-measurement-device-definition-spiro
+Instance: dev-spiro
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(spiro, MDC_DEV_SPEC_PROFILE_SPIRO, Spirometry device)
 
-Instance: kiola-measurement-device-definition-temp
+Instance: dev-temp
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
 * insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(temp, MDC_DEV_SPEC_PROFILE_TEMP, Temperature measurement device)
 
-Instance: kiola-measurement-device-definition-activity
+Instance: dev-ait-activity
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(activity, MDC_DEV_SPEC_PROFILE_VND_AIT_ACTIVITY, Activity measurement device)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-activity, MDC_DEV_SPEC_PROFILE_VND_AIT_ACTIVITY, Activity measurement device)
 
-Instance: kiola-measurement-device-definition-getemed-ekg
+Instance: dev-ait-getemed-ekg
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(getemed-ekg, MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG, Getemed ECG measurement device)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-getemed-ekg, MDC_DEV_SPEC_PROFILE_VND_AIT_GTM_EKG, Getemed ECG measurement device)
 
-Instance: kiola-measurement-device-definition-cardio-ebike-config
+Instance: dev-ait-hf-cardio-ebike-config
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(cardio-ebike-config, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_CONFIG, Cardio Ebike configuration)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-hf-cardio-ebike-config, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_CONFIG, Cardio Ebike configuration)
 * insert KIOLAMeasurementUIReferenceRuleSet(ebike)
 * insert KIOLAMeasurementAppPackageRuleSet(at.ac.ait.healthebikes)
 
-Instance: kiola-measurement-device-definition-cardio-ebike-result
+Instance: dev-ait-hf-cardio-ebike-result
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(cardio-ebike-result, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_RESULT, Cardio Ebike result)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-hf-cardio-ebike-result, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_EBIKE_RESULT, Cardio Ebike result)
 
-Instance: kiola-measurement-device-definition-cardio-ergo-config
+Instance: dev-ait-hf-cardio-ergo-config
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(cardio-ebike-config, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_CONFIG, Cardio Ergo configuration)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-hf-cardio-ergo-config, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_CONFIG, Cardio Ergo configuration)
 * insert KIOLAMeasurementUIReferenceRuleSet(ergo)
 * insert KIOLAMeasurementAppPackageRuleSet(at.ac.ait.emotioncardio)
 
-Instance: kiola-measurement-device-definition-cardio-ergo-result
+Instance: dev-ait-hf-cardio-ergo-result
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(cardio-ergo-result, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_RESULT, Cardio Ergo result)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-hf-cardio-ergo-result, MDC_DEV_SPEC_PROFILE_VND_AIT_HF_CARDIO_ERGO_RESULT, Cardio Ergo result)
 
-Instance: kiola-measurement-device-definition-sleepsequence
+Instance: dev-ait-sleepsequence
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(sleepsequence, MDC_DEV_SPEC_PROFILE_VND_AIT_SLEEPSEQUENCE, Sleepsequence measurement device)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-sleepsequence, MDC_DEV_SPEC_PROFILE_VND_AIT_SLEEPSEQUENCE, Sleepsequence measurement device)
 
-Instance: kiola-measurement-device-definition-smwt
+Instance: dev-ait-smwt
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(smwt, MDC_DEV_SPEC_PROFILE_VND_AIT_SMWT, 6-Minute-Walk-Test measurement)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-smwt, MDC_DEV_SPEC_PROFILE_VND_AIT_SMWT, 6-Minute-Walk-Test measurement)
 * insert KIOLAMeasurementAppPackageRuleSet(at.ac.ait.his.smwt)
 
-Instance: kiola-measurement-device-definition-stepcounter
+Instance: dev-ait-stepcounter
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(stepcounter, MDC_DEV_SPEC_PROFILE_VND_AIT_STEPCOUNTER, Step counter measurement)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-stepcounter, MDC_DEV_SPEC_PROFILE_VND_AIT_STEPCOUNTER, Step counter measurement)
 
-Instance: kiola-measurement-device-definition-stepsequence
+Instance: dev-ait-stepsequence
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(stepsequence, MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE, Stepsequence measurement)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-stepsequence, MDC_DEV_SPEC_PROFILE_VND_AIT_STEPSEQUENCE, Stepsequence measurement)
 
-Instance: kiola-measurement-device-definition-diagnostic-report
+Instance: dev-ait-fhir-diagnostic-report
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #inline
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(diagnostic-report, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-fhir-diagnostic-report, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
 
-Instance: kiola-measurement-device-definition-alivecor-ecg
+Instance: dev-ait-alivecor-ecg
 InstanceOf: KIOLAMeasurementAutomaticTransmissionDeviceDefinition
 Usage: #example
 Title: "AliveCor Device Definition Example"
-* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(alivecor-ecg, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
+* insert KIOLAMeasurementAutomaticTransmissionDeviceDefinitionRuleSet(ait-alivecor-ecg, MDC_DEV_SPEC_PROFILE_VND_AIT_FHIR_DIAGNOSTIC_REPORT, FHIR Diagnostic report)
 * manufacturerString = "AliveCor"
 * deviceName[+].name = "KardiaMobile 6L"
 * deviceName[=].type = #manufacturer-name
 * specialization[+].systemType = "EC"
-* specialization[=].extension[+].url = "http://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationSystemTypeCodeableConcept"
+* specialization[=].extension[+].url = "https://fhir.ehealth-systems.at/extensions/DeviceDefinition/specializationSystemTypeCodeableConcept"
 * specialization[=].extension[=].valueCodeableConcept.coding[+] = http://terminology.hl7.org/CodeSystem/v2-0074#EC "Electrocardiac"
-* specialization[=].extension[=].valueCodeableConcept.coding[+] = http://fhir.ehealth-systems.at/kiola/diagnostic-report/#ALIVECOR_ECG "AliveCor ECG Report"
+* specialization[=].extension[=].valueCodeableConcept.coding[+] = https://fhir.ehealth-systems.at/kiola/diagnostic-report/#ALIVECOR_ECG "AliveCor ECG Report"

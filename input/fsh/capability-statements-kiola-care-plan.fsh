@@ -20,10 +20,10 @@ Title: "KIOLA Care Plan Retrieval"
 The retrieval is done in 4 steps:
 1. A search with the following parameters is sent to the server, eventually including a filter for the patient, if the user has access to more than one patient: 
    * `status`: `active`
-   * `category`: `http://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan`
+   * `category`: `https://fhir.ehealth-systems.at/kiola/careplan/category#kiola-care-plan`
    * e.g. `subject__identifier`: `[KIOLA_SUBJECT_UUID]`, if required
 2. Either a single care plan is returned in the result list, or an empty list, if the patient currently does not have an active care plan.
-3. The retrieval is confirmed, by adding the meta tag `http://fhir.ehealth-systems.at/kiola/careplan/transient-tag#CONFIRMED` to the care plan using the `$meta-add` operation on the returned care plan instance. The timestamp and userAgent parameters might be appended to the code, to indicate the client and time of retrieval, e.g. `{userAgent=Pixel 4a/13 at.ac.ait.dm2/4.12.0(664):36fde7dd,timestamp=2022-11-25T09:28:29.950008}`.
+3. The retrieval is confirmed, by adding the meta tag `https://fhir.ehealth-systems.at/kiola/careplan/transient-tag#CONFIRMED` to the care plan using the `$meta-add` operation on the returned care plan instance. The timestamp and userAgent parameters might be appended to the code, to indicate the client and time of retrieval, e.g. `{userAgent=Pixel 4a/13 at.ac.ait.dm2/4.12.0(664):36fde7dd,timestamp=2022-11-25T09:28:29.950008}`.
 4. The server returns the result of the operation.
 
 Optionally, the returned ETag might be saved in step 2 and sent along in a successive retrieval in step 1 in the `If-Modified` HTTP header. If the current care plan has not been changed, a `302` HTTP code (not modified) should be returned.

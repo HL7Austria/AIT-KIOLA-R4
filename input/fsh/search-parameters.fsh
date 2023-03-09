@@ -2,8 +2,6 @@ Instance: care-plan-subject-identifier-parameter
 InstanceOf: SearchParameter
 Usage: #definition
 Title: "Care Plan Subject Identifier Parameter"
-* url = "http://fhir.ehealth-systems.at/SearchParameter/care-plan-subject-identifier"
-* id  = "CarePlan-SubjectIdentifier"
 * version = "1"
 * name = "CarePlanSubjectIdentifierParameter"
 * status = #active
