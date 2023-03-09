@@ -6,11 +6,11 @@ Title: "KIOLA Standard Treatment Plan Simple Example"
 * url = "https://fhir.ehealth-systems.at/artifacts/PlanDefinition/SimpleExample"
 * status = #active
 * title = "Simple Example"
-* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/measurement/MDC_DEV_SPEC_PROFILE_BP"
+* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_BP"
 * action[=].title = "Measurement Blood Pressure"
-* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/measurement/MDC_DEV_SPEC_PROFILE_SCALE"
+* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_SCALE"
 * action[=].title = "Measurement Weight"
-* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/measurement/MDC_DEV_SPEC_PROFILE_VND_AIT_WELLBEING"
+* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_VND_AIT_WELLBEING"
 * action[=].title = "Measurement Wellbeing"
 
 Instance: kiola-standard-treatment-plan-timing-example
@@ -21,7 +21,7 @@ Title: "KIOLA Standard Treatment Plan Timing Example"
 * url = "https://fhir.ehealth-systems.at/artifacts/PlanDefinition/TimingExample"
 * status = #active
 * title = "Timing Example"
-* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/measurement/MDC_DEV_SPEC_PROFILE_BP"
+* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_BP"
 * action[=].title = "Measurement Blood Pressure"
 * action[=].timingTiming.repeat.frequency = 1
 * action[=].timingTiming.repeat.period = 1
