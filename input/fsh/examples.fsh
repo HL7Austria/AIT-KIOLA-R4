@@ -6,11 +6,11 @@ Title: "KIOLA Standard Treatment Plan Simple Example"
 * url = "https://fhir.ehealth-systems.at/artifacts/PlanDefinition/SimpleExample"
 * status = #active
 * title = "Simple Example"
-* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_BP"
+* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/mdc-dev-spec-profile-bp"
 * action[=].title = "Measurement Blood Pressure"
-* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_SCALE"
+* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/mdc-dev-spec-profile-scale"
 * action[=].title = "Measurement Weight"
-* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_VND_AIT_WELLBEING"
+* action[+].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/mdc-dev-spec-profile-vnd-ait-wellbeing"
 * action[=].title = "Measurement Wellbeing"
 
 Instance: kiola-standard-treatment-plan-timing-example
@@ -21,7 +21,7 @@ Title: "KIOLA Standard Treatment Plan Timing Example"
 * url = "https://fhir.ehealth-systems.at/artifacts/PlanDefinition/TimingExample"
 * status = #active
 * title = "Timing Example"
-* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/MDC_DEV_SPEC_PROFILE_BP"
+* action[0].definitionCanonical = "https://fhir.ehealth-systems.at/artifacts/ActivityDefinition/mdc-dev-spec-profile-bp"
 * action[=].title = "Measurement Blood Pressure"
 * action[=].timingTiming.repeat.frequency = 1
 * action[=].timingTiming.repeat.period = 1
@@ -62,6 +62,6 @@ Instance: kiola-measurement-device-definition-property-example
 InstanceOf: KIOLAMeasurementDeviceDefinition
 Usage: #inline
 * id = "dev-scale"
-* type.coding[0] = https://fhir.ehealth-systems.at/kiola/device/AIT-11073#MDC_DEV_SPEC_PROFILE_SCALE "Body weight scale"
+* type.coding[0] = https://fhir.ehealth-systems.at/kiola/device/AIT-11073#mdc-dev-spec-profile-scale "Body weight scale"
 * property[0].type.coding[0] = https://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type "KMC Blocked Device"
 * property[=].valueCode[0].coding[0] = https://fhir.ehealth-systems.at/kiola/device#ExampleScale "Example body weight scale"
