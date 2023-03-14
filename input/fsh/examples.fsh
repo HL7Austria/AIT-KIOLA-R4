@@ -62,6 +62,6 @@ Instance: kiola-measurement-device-definition-property-example
 InstanceOf: KIOLAMeasurementDeviceDefinition
 Usage: #inline
 * id = "dev-scale"
-* type.coding[0] = https://fhir.ehealth-systems.at/kiola/device/AIT-11073#mdc-dev-spec-profile-scale "Body weight scale"
+* type.coding[0] = https://fhir.ehealth-systems.at/kiola/device/AIT-11073#MDC_DEV_SPEC_PROFILE_SCALE "Body weight scale"
 * property[0].type.coding[0] = https://fhir.ehealth-systems.at/kiola/device/kmc#blocked_device_type "KMC Blocked Device"
 * property[=].valueCode[0].coding[0] = https://fhir.ehealth-systems.at/kiola/device#ExampleScale "Example body weight scale"
