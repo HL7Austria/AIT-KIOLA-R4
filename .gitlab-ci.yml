@@ -19,8 +19,9 @@ before_script:
   # FHIR
   - npm install -g fsh-sushi
   # FHIR IG Publisher
-  - mkdir -p ./input-cache
-  - wget -o ./input-cache/publisher.jar https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+  #- mkdir -p ./input-cache
+  #- wget -o ./input-cache/publisher.jar https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+  - wget https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
   # TEST
   - echo "TEST:"
   - ls -la .
