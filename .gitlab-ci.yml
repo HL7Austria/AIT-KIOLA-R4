@@ -12,11 +12,14 @@ before_script:
   - apk add --no-cache openjdk11
   - apk add --no-cache graphviz
   - apk add --no-cache fontconfig ttf-dejavu
+  # Jekyll
+  - apk add --no-cache jekyll
   # Version checks
   - echo "Version check:"
   - node --version
   - npm --version
   - java -version
+  - jekyll --version
   # FHIR
   - npm install -g fsh-sushi
   # FHIR IG Publisher
@@ -31,6 +34,12 @@ build:
   stage: build
   script:
     - java -jar input-cache/publisher.jar -ig ig.ini
+    # TEST
+    - echo "TEST:"
+    - ls -la .
+    - ls -la ./input-cache
+    - ls -la ./output
+    - ls -la ./fsh-generated
   cache:
     paths:
       - ./input-cache
