@@ -25,7 +25,6 @@ before_script:
   # TEST
   - echo "TEST:"
   - ls -la .
-  - ls -la ./node-modules
   - ls -la ./input-cache
 
 stages:
