@@ -7,7 +7,7 @@ image: node:19-alpine
 before_script:
   - echo "Install requirements..."
   - apk update
-  - apt install -y git
+  - apk add --no-cache git
   # Java
   - apk add --no-cache openjdk11
   - apk add --no-cache graphviz
