@@ -1,3 +1,4 @@
+# FHIR
 build/
 output/
 input-cache/
@@ -5,3 +6,7 @@ fsh-generated/
 temp/
 template/
 validator_cli.jar
+
+# Ignore IntelliJ files
+*.iml
+/.idea

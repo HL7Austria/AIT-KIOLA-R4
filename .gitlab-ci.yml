@@ -1,0 +1,57 @@
+image: node:19-alpine
+
+#variables:
+#  ANSIBLE_CONFIG: "./ansible/ansible.cfg"
+#  ANSIBLE_FORCE_COLOR: "true"
+
+before_script:
+  - echo "Install requirements..."
+  - apk update
+  - apt install -y git
+  # Java
+  - apk add --no-cache openjdk11
+  - apk add --no-cache graphviz
+  - apk add --no-cache fontconfig ttf-dejavu
+  # Version checks
+  - echo "Version check:"
+  - npm --version
+  - java -version
+  # FHIR
+  - npm install -g fsh-sushi
+  # FHIR IG Publisher
+  - mkdir -p ./input-cache
+  - wget -o ./input-cache/publisher.jar https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+  # TEST
+  - echo "TEST:"
+  - ls -la .
+  - ls -la ./input-cache
+
+stages:
+  - build
+#  - deploy
+
+build:
+  stage: build
+  script:
+    - java -jar ./input-cache/publisher.jar -ig ./ig.ini
+    # TEST
+    - echo "TEST:"
+    - ls -la .
+    - ls -la ./input-cache
+  cache:
+    paths:
+      - ./input-cache
+
+#pages:
+#  stage: deploy
+#  interruptible: true
+#  rules:
+#    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#  cache:
+#    paths:
+#      - ./input-cache
+#  script:
+#    - sh ./build.sh
+#  artifacts:
+#    paths:
+#      - public
