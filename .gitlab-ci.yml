@@ -1,30 +1,7 @@
-image: node:19-alpine
-
-#variables:
-#  ANSIBLE_CONFIG: "./ansible/ansible.cfg"
-#  ANSIBLE_FORCE_COLOR: "true"
-
 before_script:
   - echo "Install requirements..."
   - apk update
   - apk add --no-cache git
-  # Java
-  - apk add --no-cache openjdk11
-  - apk add --no-cache graphviz
-  - apk add --no-cache fontconfig ttf-dejavu
-  # Jekyll
-  - apk add --no-cache jekyll
-  # Version checks
-  - echo "Version check:"
-  - node --version
-  - npm --version
-  - java -version
-  - jekyll --version
-  # FHIR
-  - npm install -g fsh-sushi
-  # FHIR IG Publisher
-  - mkdir -p ./input-cache
-  - wget -O "./input-cache/publisher.jar" "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
 
 stages:
   - build
@@ -32,7 +9,26 @@ stages:
 
 build:
   stage: build
+  image: node:19-alpine
   script:
+    # Java
+    - apk add --no-cache openjdk11
+    - apk add --no-cache graphviz
+    - apk add --no-cache fontconfig ttf-dejavu
+    # Jekyll
+    - apk add --no-cache jekyll
+    # Version checks
+    - echo "Version check:"
+    - node --version
+    - npm --version
+    - java -version
+    - jekyll --version
+    # FHIR
+    - npm install -g fsh-sushi
+    # FHIR IG Publisher
+    - mkdir -p ./input-cache
+    - wget -O "./input-cache/publisher.jar" "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
+    # Build the output
     - java -jar input-cache/publisher.jar -ig ig.ini
   cache:
     paths:
@@ -45,6 +41,7 @@ build:
 
 pages:
   stage: deploy
+  image: alpine:latest
   interruptible: true
 #  rules:
 #    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
