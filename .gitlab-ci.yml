@@ -17,13 +17,15 @@ before_script:
   - npm --version
   - java -version
   # FHIR
-  - npm install fsh-sushi
+  - npm install -g fsh-sushi
+  - which sushi
   # FHIR IG Publisher
   - mkdir -p ./input-cache
   - wget -O "./input-cache/publisher.jar" "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
   # TEST
   - echo "TEST:"
   - ls -la .
+  - ls -la ./node-modules
   - ls -la ./input-cache
 
 stages:
@@ -33,7 +35,7 @@ stages:
 build:
   stage: build
   script:
-    - java -jar ./input-cache/publisher.jar -ig ./ig.ini
+    - java -jar input-cache/publisher.jar -ig ig.ini
     # TEST
     - echo "TEST:"
     - ls -la .
