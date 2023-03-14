@@ -19,17 +19,9 @@ before_script:
   - java -version
   # FHIR
   - npm install -g fsh-sushi
-  - which sushi
   # FHIR IG Publisher
   - mkdir -p ./input-cache
   - wget -O "./input-cache/publisher.jar" "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
-  # TEST
-  - echo "TEST:"
-  - ls -la .
-  - ls -la ./input-cache
-  - echo $PATH
-  - export PATH=/home/ubuntu/.nvm/versions/node/v10.16.3/bin/:$PATH
-  - echo $PATH
 
 stages:
   - build
@@ -39,10 +31,6 @@ build:
   stage: build
   script:
     - java -jar input-cache/publisher.jar -ig ig.ini
-    # TEST
-    - echo "TEST:"
-    - ls -la .
-    - ls -la ./input-cache
   cache:
     paths:
       - ./input-cache
