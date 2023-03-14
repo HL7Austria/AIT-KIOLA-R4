@@ -43,6 +43,11 @@ build:
   cache:
     paths:
       - ./input-cache
+      - ./output
+  artifacts:
+    paths:
+      - ./output
+      - ./fsh-generated
 
 #pages:
 #  stage: deploy
@@ -52,8 +57,10 @@ build:
 #  cache:
 #    paths:
 #      - ./input-cache
+#      - ./output
+#    policy: pull
 #  script:
-#    - sh ./build.sh
+#    - mv ./output ./public
 #  artifacts:
 #    paths:
 #      - public
