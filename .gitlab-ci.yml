@@ -43,8 +43,9 @@ pages:
   stage: deploy
   image: alpine:latest
   interruptible: true
-#  rules:
+  rules:
 #    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == 'development'
   script:
     - mv ./output ./public
   cache:
