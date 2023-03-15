@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SD=$(cd "$(dirname "$0")"; pwd -P)
 WD="$(pwd)"
