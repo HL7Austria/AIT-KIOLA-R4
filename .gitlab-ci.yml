@@ -1,4 +1,7 @@
 before_script:
+  - echo "Set file rights..."
+  - chmod +x build.sh
+  - chmod +x install.sh
   - echo "Install requirements..."
   - apk update
   - apk add --no-cache git
