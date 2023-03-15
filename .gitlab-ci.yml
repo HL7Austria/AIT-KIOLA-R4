@@ -29,7 +29,7 @@ build:
     - mkdir -p ./input-cache
     - wget -O "./input-cache/publisher.jar" "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
     # Build the output
-    - java -jar input-cache/publisher.jar -ig ig.ini
+    - ./build.sh
   cache:
     paths:
       - ./input-cache
