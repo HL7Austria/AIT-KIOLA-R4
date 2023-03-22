@@ -1,0 +1,60 @@
+before_script:
+  - echo "Set file rights..."
+  - chmod +x build.sh
+  - chmod +x install.sh
+  - echo "Install requirements..."
+  - apk update
+  - apk add --no-cache git
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image: node:19-alpine
+  script:
+    # Java
+    - apk add --no-cache openjdk11
+    - apk add --no-cache graphviz
+    - apk add --no-cache fontconfig ttf-dejavu
+    # Jekyll
+    - apk add --no-cache jekyll
+    # Version checks
+    - echo "Version check:"
+    - node --version
+    - npm --version
+    - java -version
+    - jekyll --version
+    # FHIR
+    - npm install -g fsh-sushi
+    # FHIR IG Publisher
+    - mkdir -p ./input-cache
+    - wget -O "./input-cache/publisher.jar" "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
+    # Build the output
+    - ./build.sh
+  cache:
+    paths:
+      - ./input-cache
+      - ./output
+  artifacts:
+    paths:
+      - ./output
+      - ./fsh-generated
+
+pages:
+  stage: deploy
+  image: alpine:latest
+  interruptible: true
+  rules:
+#    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == 'development'
+  script:
+    - mv ./output ./public
+  cache:
+    paths:
+      - ./output
+    policy: pull
+  artifacts:
+    paths:
+      - public
