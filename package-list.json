@@ -1,15 +1,15 @@
 {
-"package-id": "kiola-implementation-guide",
-"title": "KIOLA Implementation Guide",
-"canonical": "https://fhir.ehealth-systems.at/artifacts",
-"introduction": "An Implementation Guide for the KIOLA Profiles.",
-  "list": [
-    {
-      "version": "current",
-      "desc": "Draft",
-    "path": "https://fhir.ehealth-systems.at/artifacts",
-      "status": "ci-build",
-      "current": true
-    }
-  ]
+    "package-id": "kiola-implementation-guide",
+    "title": "KIOLA Implementation Guide",
+    "canonical": "https://fhir.ehealth-systems.at/artifacts",
+    "introduction": "The official HL7® FHIR® Implementation Guide for the KIT Telehealth Platform by AIT",
+    "list": [
+        {
+            "version": "current",
+            "desc": "Draft",
+            "path": "https://fhir.ehealth-systems.at/artifacts",
+            "status": "ci-build",
+            "current": true
+        }
+    ]
 }
