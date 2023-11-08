@@ -24,10 +24,10 @@ contact:
         value: mailto:office@ait.ac.at
 description: An Implementation Guide for the KIOLA Profiles.
 license: CC0-1.0
-fhirVersion: 	4.0.1
+fhirVersion: 	4.3.0
 parameters:
   show-inherited-invariants: false
-copyrightYear: 2022+
+copyrightYear: 2023+
 releaseLabel: STU1
 
 # ╭─────────────────────────────────────────────ig.ini─────────────────────────────────────────────╮
